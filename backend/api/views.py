@@ -127,7 +127,181 @@ class nmap_api(APIView):
             a = subprocess.run(['sudo', 'nmap', '-PO', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(a.stdout)
 
+        elif scan_type == "Traceroute":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '--traceroute', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Force Reverse DNS Resolution":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-R', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Disable Reverse DNS Resolution":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-n', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Alternative DNS Lookup":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '--system-dns', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Manually Specify DNS Server":
+            ip = request.data.get('ip')
+            dns_ip = request.data.get('dns_ip')
+            a = subprocess.run(['sudo', 'nmap', '--dns-servers', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Create a Host List":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sL', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+        #advanced
+
+        elif scan_type == "TCP SYN Scan":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sS', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "TCP Connect Scan":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sT', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "UDP Scan":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sU', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "TCP NULL Scan":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sN', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "TCP FIN Scan":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sF', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Xmas Scan":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sX', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "TCP ACK Scan":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sA', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Custom TCP Scan":
+
+            ip = request.data.get('ip')
+            flag = request.data.get('flag')
+            a = subprocess.run(['sudo', 'nmap', '--scanflags',flag, ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "IP Protocol Scan":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sO', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Send Raw Ethernet Packets":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '--send-eth', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Send IP Packets":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '--send-ip ', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
         
+        #port scanning
+
+
+        elif scan_type == "Perform a Fast Scan":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-F', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Scan Specific Ports":
+            ip = request.data.get('ip')
+            ports = request.data.get('ports')
+            port_arg = '-p' + ports
+            command = ['sudo', 'nmap', port_arg, ip]
+            a = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Scan Ports by Name":
+            ip = request.data.get('ip')
+            ports = request.data.get('ports')
+            port_arg = '-p' + ports
+            command = ['sudo', 'nmap', port_arg, ip]
+            a = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Scan Ports by TCP":
+            ip = request.data.get('ip')
+            tcp_ports = request.data.get('tcp_ports')
+            if tcp_ports:
+                tcp_port_arg = '-p T:' + tcp_ports
+                tcp_command = ['sudo', 'nmap', '-sT', tcp_port_arg, ip]
+                result = subprocess.run(tcp_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+                return Response(result.stdout)
+            return Response("No UDP or TCP ports specified.", status=400)
+        
+        elif scan_type == "Scan Ports by UDP":
+            ip = request.data.get('ip')
+            udp_ports = request.data.get('udp_ports')
+            if udp_ports:
+                udp_port_arg = '-p U:' + udp_ports
+                udp_command = ['sudo', 'nmap', '-sU', udp_port_arg, ip]
+                result = subprocess.run(udp_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+                return Response(result.stdout)
+
+        elif scan_type == "Scan All Ports":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-p', '*', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Scan Top Ports":
+            ip = request.data.get('ip')
+            num = request.data.get('number')
+            a = subprocess.run(['sudo', 'nmap', '--top-ports',num, ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Sequential Port Scan":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-r', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+        #Version Detection
+
+
+
+        elif scan_type == "Operating System Detection":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-O', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == " Guess an Unknown OS":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-O','--osscan guess', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Service Version Detection":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sV', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Troubleshooting Version Scans":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sV','--version trace', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Perform a RPC Scan":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-sR', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
 
         else:
             a = "error"
