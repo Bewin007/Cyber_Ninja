@@ -302,6 +302,118 @@ class nmap_api(APIView):
             ip = request.data.get('ip')
             a = subprocess.run(['sudo', 'nmap', '-sR', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(a.stdout)
+        #Firewall Evasion Techniques except [Spoof MAC Address,Randomize Target Scan Order ,Zombie Scan]
+
+        elif scan_type == "augment Packets":
+            ip = request.data.get('ip')
+            a = subprocess.run(['sudo', 'nmap', '-f', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(a.stdout)
+
+        elif scan_type == "Pacify Specific MTU":
+            ip = request.data.get('ip')
+            mtu_value = request.data.get('mtu')
+            mtu_command = ['sudo', 'nmap', '--mtu', str(mtu_value), ip]
+            result = subprocess.run(mtu_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "Use a Decoy":
+            ip = request.data.get('ip')
+            num = request.data.get('number')
+            decoy_command = ['sudo', 'nmap', '-D', f'RND:{num}', ip]
+            result = subprocess.run(decoy_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        # elif scan_type == "Zombie Scan":
+        #     ip = request.data.get('ip')
+        #     zombie = request.data.get('zombie')
+        #     zombie_command = ['sudo', 'nmap', '-sI', zombie, ip]
+        #     result = subprocess.run(zombie_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+        #     return Response(result.stdout)
+
+        elif scan_type == "Manually Specify a Source Port":
+            ip = request.data.get('ip')
+            port = request.data.get('port')
+            source_port_command = ['sudo', 'nmap', '--source-port', str(port), ip]
+            result = subprocess.run(source_port_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "Append Random Data":
+            ip = request.data.get('ip')
+            data_length = request.data.get('size')
+            random_data_command = ['sudo', 'nmap', '--data-length', str(data_length), ip]
+            result = subprocess.run(random_data_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        # elif scan_type == "Randomize Target Scan Order":
+        #     ip = request.data.get('ip')
+        #     randomize_command = ['sudo', 'nmap', '--randomize-hosts', ip]
+        #     result = subprocess.run(randomize_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+        #     return Response(result.stdout)
+
+        # elif scan_type == "Spoof MAC Address":
+        #     ip = request.data.get('ip')
+        #     mac_address = request.data.get('MAC')
+        #     spoof_mac_command = ['sudo', 'nmap', '--spoof-mac', mac_address, ip]
+        #     result = subprocess.run(spoof_mac_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+        #     return Response(result.stdout)
+
+        elif scan_type == "Send Bad Checksums":
+            ip = request.data.get('ip')
+            badsum_command = ['sudo', 'nmap', '--badsum', ip]
+            result = subprocess.run(badsum_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        #Troubleshooting And Debugging
+        elif scan_type == "Getting Help":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '-h']
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)        
+
+        elif scan_type == "Display Nmap Version":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '-V']
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)  
+
+        elif scan_type == "Verbose Output":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '-v',ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)    
+
+        elif scan_type == "Debugging":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '-d', ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)    
+
+        elif scan_type == "Display Port State Reason":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '-reason', ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)  
+
+        elif scan_type == "Trace Packets":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '--packet-trace', ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout) 
+
+        elif scan_type == "Display Host Networking":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '--iflist', ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)  
+
+        elif scan_type == "Display Port State Reason":
+            ip = request.data.get('ip')
+            interface = request.data.get('interface')
+            command = ['sudo', 'nmap', '-e',interface, ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)  
+
+        
 
         else:
             a = "error"
