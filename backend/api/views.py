@@ -413,7 +413,45 @@ class nmap_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)  
 
-        
+        #NMAP Scripting Engine
+
+
+        elif scan_type == "Execute Individual Scripts":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '--iflist', ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)  
+
+
+        elif scan_type == "Display Host Networking":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '--iflist', ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)  
+
+        elif scan_type == "Display Host Networking":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '--iflist', ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)  
+
+        elif scan_type == "Display Host Networking":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '--iflist', ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)  
+
+        elif scan_type == "Display Host Networking":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '--iflist', ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)  
+
+        elif scan_type == "Display Host Networking":
+            ip = request.data.get('ip')
+            command = ['sudo', 'nmap', '--iflist', ip]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)  
 
         else:
             a = "error"
