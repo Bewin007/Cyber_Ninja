@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid-container {
+    display: grid;
+    column-gap: 50px;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    background-color:black;
+    padding: 30px;
+    
+  /* height: 150px; */
+  
+  background-color:black;
+  margin: auto;
+  margin-top: 5%;
+  margin-left:8%;
+  margin-right:8%;
+  padding: 10px;
+}
+  
+  
+  .grid-item {
+    background-color:white;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    width:150px;
+    height: 75px;
+  }
+  .button {
+            position: absolute;
+            bottom: 7%;
+            left: 50%;
+            /*104.5px is half of the button's width*/
+            
+            background-color: black;
+            color: white;
+            height:5%;
+        }
+        .button:hover{
+            background-color: #FBC400;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container" >
+        <div class="grid-item">
+            <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+          </div>
+          <div class="grid-item">
+            <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/processor manager.png" /> 
+          </div>
+          <div class="grid-item">
+            <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/volatility.png" /> 
+          </div>
+          <div class="grid-item">
+            <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/Autopsy.jpeg" /> 
+          </div>
+          <div class="grid-item">
+            <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/wireshark.jpeg" /> 
+          </div>
+        </div>
+        <button
+            id="back" class="button">Back
+        </button>
+
+
+    </div>
+    <script>
+        // Get a reference to the button element
+        const navigateButton1 = document.getElementById("back");
+    
+        // Add a click event listener to the button
+        navigateButton1.addEventListener("click", function() {
+            // Navigate to index.html when the button is clicked
+            window.location.href = "first.html";
+        });
+        </script>
+    
+    
+</body>
+</html>

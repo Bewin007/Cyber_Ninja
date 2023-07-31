@@ -1,33 +1,6 @@
 body{
   background-color:black;
 }
-.grid-container {
-    display: grid;
-    column-gap: 50px;
-    grid-template-columns: auto auto auto auto auto auto auto;
-    background-color:black;
-    padding: 30px;
-    
-  /* height: 150px; */
-  
-  background-color:black;
-  margin: auto;
-  margin-top: 20%;
-  margin-left:8%;
-  
-  padding: 10px;
-}
-  
-  
-  .grid-item {
-    background-color:white;
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-    width:150px;
-    height: 75px;
-
-  }
   button{
     width:150px;
     height: 75px;}

@@ -26,9 +26,7 @@ function createWindow() {
       // console.log(os.totalmem())
     });
   },1000);
-  mainWindow.on('closed', () => {
-    mainWindow = null;
-  });
+
 }
 
 app.on('ready', createWindow);
