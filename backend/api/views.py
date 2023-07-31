@@ -511,7 +511,8 @@ class wireshark_api(APIView):
             return Response(result.stdout)
         
 
-
+class exiftool_api(APIView):
+    
 
 
 
