@@ -451,3 +451,66 @@ class nmap_api(APIView):
 
         else:
             return Response("Enter a valid Scan Type")
+        
+    
+class volatality_api(APIView):
+    
+    def post(self, request):
+        
+        scan_type = request.data.get('scan_type')
+        if scan_type == 'imageinfo':
+            path = request.data.get('path')
+            command = ['sudo', 'volatility', '-l', path, 'imageinfo']
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        # elif scan_type == '':
+
+
+class wireshark_api(APIView):
+    
+    def post (self,request):
+        scan_type = request.data.get('scan_type')
+        if scan_type == 'ifconfig':
+            command = ['sudo', 'ifconfig']
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == 'capture the process':
+            port = request.data.get('port')
+            count = request.data.get('count')
+            command = ['sudo', 'tshark', '-i', port, '-c', count]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == 'capture from specified interface':
+            interface_number = request.data.get('interface_number')
+            count = request.data.get('count')
+            command = ['sudo', 'tshark', '-i', interface_number, '-c', count]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "capture packets from ports": #issue
+            port = request.data.get('port')
+            port_num = request.data.get('port_num')
+            count = request.data.get('count')
+            # display_filter = f'tcp.dstport == {port_num}'  # Use 'tcp.dstport' for TCP packets or 'udp.dstport' for UDP packets
+            command = ['sudo', 'tshark', '-i', port, '-f', port_num, '-c', count]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "capture packet for duration":
+            port = request.data.get('port')
+            time = request.data.get('time')
+            command = ['sudo', 'tshark', '-i', port, '-a', 'duration:'+time]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        
+        
+        
+
+
+
+
+
+        
