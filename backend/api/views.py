@@ -21,7 +21,6 @@ class nmap_api(APIView):
     
     def post(self, request):
         scan_type = request.data.get('scan_type')
-        result =  ""
 
         #Basic commands  [except excluding commands]
         if scan_type == 'Single target':
