@@ -272,8 +272,6 @@ class nmap_api(APIView):
             return Response(result.stdout)
         #Version Detection
 
-
-
         elif scan_type == "Operating System Detection":
             ip = request.data.get('ip')
             result =  subprocess.run(['sudo', 'nmap', '-O', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
@@ -504,10 +502,15 @@ class wireshark_api(APIView):
             command = ['sudo', 'tshark', '-i', port, '-a', 'duration:'+time]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
+
+        elif scan_type == "capture packet for filesize":
+            port = request.data.get('port')
+            size = request.data.get('size')
+            command = ['sudo', 'tshark', '-i', port, '-a', 'duration:'+size]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
         
-        
-        
-        
+
 
 
 
