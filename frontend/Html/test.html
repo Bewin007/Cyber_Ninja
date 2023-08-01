@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electron App</title>
+</head>
+<body>
+    <form id="getDataForm">
+      <label for="scanType">Scan Type:</label>
+      <input type="text" id="scanType" name="scanType" required><br><br>
+
+      <label for="portNum">Port Number:</label>
+      <input type="text" id="portNum" name="portNum" required><br><br>
+
+      <label for="time">Time:</label>
+      <input type="text" id="time" name="time" required><br><br>
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required><br><br>
+
+      <button type="submit">Get Data</button>
+    </form>
+
+    <div id="dataContainer"></div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const getDataForm = document.getElementById('getDataForm');
+        const dataContainer = document.getElementById('dataContainer');
+
+        getDataForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          // Collect data from the form
+          const requestData = {
+            scan_type: document.getElementById('scanType').value,
+            port_num: document.getElementById('portNum').value,
+            time: document.getElementById('time').value,
+            location: document.getElementById('location').value,
+          };
+
+          // Make the fetch POST request
+          fetch('http://127.0.0.1:8000/binwalk/', {
+            method: 'POST', // Specify the HTTP method as POST
+            headers: {
+              'Content-Type': 'application/json', // Set the content type to JSON
+            },
+            body: JSON.stringify(requestData), // Convert the data to JSON and send in the request body
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              // Display the fetched data in the container
+              dataContainer.innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              dataContainer.innerText = 'Error fetching data';
+            });
+        });
+      });
+    </script>
+</body>
+</html>
