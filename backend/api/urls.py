@@ -9,4 +9,5 @@ urlpatterns = [
     path ('wireshark/', wireshark_api.as_view()),
     path ('exiftool/',exiftool_api.as_view()),
     path ('strings/',Strings_api.as_view()),
+    path ('binwalk/',Binwalk_api.as_view()),
 ]

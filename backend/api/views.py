@@ -611,14 +611,62 @@ class Strings_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
         
-# class test(APIView):
-#     def post(self,request):
-#         scan_type = request.data.get('scan_type')
-#         if scan_type == "separator used by Strings is a newline":
-#             location = request.data.get('location')
-#             command = ['sudo', "strings", "-s","[[[]]]", location]
-#             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-#             return Response(result.stdout)    
+class Binwalk_api(APIView):
+    def post(self,request):
+        scan_type = request.data.get('scan_type')
+        if scan_type == "basic scan on the specified file":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)   
+         
+        elif scan_type == "specific file signatures ":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-S", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)    
+         
+        elif scan_type == "recursive scan":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-r", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)    
+         
+        elif scan_type == "entropy analysis":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-E", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)    
+         
+        elif scan_type == "recursive signature scan":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-C", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)    
+         
+        elif scan_type == "only display results":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-q", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)     
+         
+        elif scan_type == "Extract and Display Disassembly":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-A", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)   
+         
+        elif scan_type == "Extract and Display Metadata":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-M", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)   
+         
+        elif scan_type == "Enable Debugging Output":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-d", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)  
            
         
 
