@@ -513,6 +513,115 @@ class wireshark_api(APIView):
 
 class exiftool_api(APIView):
     
+    def post(self,request):
+        scan_type = request.data.get("scan_type")
+        if scan_type == "Extract information from a file":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "Print all meta information":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "Print common meta information":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", "-common", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "Find image size and exposure time":#
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", "-s", "-ImageSize", "-ExposureTime", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        # elif scan_type == "Print formatted date/time for all JPG files in the current directory":#
+        #     location = request.data.get('location')
+        #     command = ['sudo', "exiftool", "-s", "-ImageSize", "-ExposureTime", location]
+        #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+        #     return Response(result.stdout)
+        
+        elif scan_type == "Extract image resolution from EXIF IFD1":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", "-IFD1:XResolution", "-IFD1:YResolution", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "all author-related XMP information from an image":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", "-xmp:author:all", "-a", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "Print one line of output containing the file name":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", '"$filename has date $dateTimeOriginal"', "-q", "-f", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "GPS positions from an AVCHD video":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", "-ee", "-p", '"$gpslatitude, $gpslongitude, $gpstimestamp"', location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+
+class Strings_api(APIView):
+
+    def post(self,request):
+        scan_type = request.data.get('scan_type')
+
+        if scan_type == "strings of printable characters in files":
+            location = request.data.get('location')
+            command = ['sudo', "strings", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "sequences that are at least 4 characters long":
+            location = request.data.get('location')
+            command = ['sudo', "strings","-n", "2", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "Strings to also display the offsets":
+            location = request.data.get('location')
+            command = ['sudo', "strings", "-t", "d", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "may or may not scan the whole input file":
+            location = request.data.get('location')
+            command = ['sudo', "strings", "-a", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "strings of printable characters in files":
+            location = request.data.get('location')
+            command = ['sudo', "strings", "-d", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+        elif scan_type == "separator used by Strings is a newline":
+            location = request.data.get('location')
+            command = ['sudo', "strings", "-s","[[[]]]", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+        
+# class test(APIView):
+#     def post(self,request):
+#         scan_type = request.data.get('scan_type')
+#         if scan_type == "separator used by Strings is a newline":
+#             location = request.data.get('location')
+#             command = ['sudo', "strings", "-s","[[[]]]", location]
+#             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+#             return Response(result.stdout)    
+           
+        
+
 
 
 
