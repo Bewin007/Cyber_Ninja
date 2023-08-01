@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electron App</title>
+    <style>
+        .grid-item{
+    border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: black;
+  margin-top:10% ;
+ 
+    
+  }
+  .grid-item p{
+    color: white;
+  }
+  label{
+    color: white;
+  }
+    </style>
+</head>
+<body>
+    <form id="getDataForm">
+      <div class="grid-item">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <label for="scanType">Scan Type:</label>
+        <input type="text" id="scanType" name="scanType" required><br><br>
+      </div>
+
+      <label for="portNum">Port Number:</label>
+      <input type="text" id="portNum" name="portNum" ><br><br>
+
+      <label for="time">Time:</label>
+      <input type="text" id="time" name="time" ><br><br>
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location"><br><br>
+
+      <button type="submit">Get Data</button>
+    </form>
+
+    <div id="dataContainer"></div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const getDataForm = document.getElementById('getDataForm');
+        const dataContainer = document.getElementById('dataContainer');
+
+        getDataForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          // Collect data from the form
+          const requestData = {
+            scan_type: document.getElementById('scanType').value,
+            port_num: document.getElementById('portNum').value,
+            time: document.getElementById('time').value,
+            location: document.getElementById('location').value,
+          };
+
+          // Make the fetch POST request
+          fetch('http://127.0.0.1:8000/binwalk/', {
+            method: 'POST', // Specify the HTTP method as POST
+            headers: {
+              'Content-Type': 'application/json', // Set the content type to JSON
+            },
+            body: JSON.stringify(requestData), // Convert the data to JSON and send in the request body
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              // Display the fetched data in the container
+              dataContainer.innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              dataContainer.innerText = 'Error fetching data';
+            });
+        });
+      });
+    </script>
+</body>
+</html>

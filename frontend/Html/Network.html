@@ -6,64 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Network</title>
     <style>
+      .body{
+        background-color: black;
+      }
         .grid-container {
-    display: grid;
-    column-gap: 50px;
-    grid-template-columns: auto auto auto auto auto auto auto;
-    background-color:black;
-    padding: 30px;
+          display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+  gap: 20px;
+  }
+  
+  .grid-item{
+    border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: black;
+  margin-top:10% ;
+ 
     
-  /* height: 150px; */
-  
-  background-color:black;
-  margin: auto;
-  margin-top: 20%;
-  margin-left:8%;
-  
-  padding: 10px;
-}
-  
-  
-  .grid-item {
-    background-color:white;
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-    width:150px;
-    height: 75px;
+  }
+  .grid-item p{
+    color: white;
   }
   .button {
             position: absolute;
-            bottom: 7%;
+            bottom: -300px;
             left: 50%;
+            right: 50%;
             margin-left: -104.5px; /*104.5px is half of the button's width*/
             background-color: black;
             color: white;
-            height:5%;
+            height:7%;
+            padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
         }
         .button:hover{
             background-color: #FBC400;
         }
+        .cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color:black;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.cta-button:hover {
+  background-color:#FBC400 ;
+}
     </style>
 </head>
 <body>
     <div class="grid-container" >
             <div class="grid-item">
               <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              <a href="Nform.html" class="cta-button">Go</a>
             </div>
             <div class="grid-item">
-              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/processor manager.png" /> 
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              
             </div>
             <div class="grid-item">
-              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/volatility.png" /> 
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              
             </div>
             <div class="grid-item">
-              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/Autopsy.jpeg" /> 
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              
             </div>
             <div class="grid-item">
-              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/wireshark.jpeg" /> 
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              
             </div>
-          </div>
+            <div class="grid-item">
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              
+            </div>
+            
 
         <button
             id="back" class="button">Back
