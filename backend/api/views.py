@@ -18,7 +18,7 @@ import subprocess
 import json
 
 class nmap_api(APIView):
-    
+
     def post(self, request):
         scan_type = request.data.get('scan_type')
 
@@ -58,7 +58,7 @@ class nmap_api(APIView):
         # elif scan_type == "Random Hosts":
         #     num = request.data.get('number')
         #     # print(str(num))
-            
+
         #     result =  subprocess.run(['sudo', 'namp', "-iR", "1"], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     return Response(result.stdout)
         #     # return Response("a")
@@ -108,7 +108,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-PE', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
 
-        elif scan_type == "ICMP Timestamp Ping":
+        elif scan_type == "ITimestamp PingCMP ":
             ip = request.data.get('ip')
             result =  subprocess.run(['sudo', 'nmap', '-PP', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
@@ -211,7 +211,7 @@ class nmap_api(APIView):
             ip = request.data.get('ip')
             result =  subprocess.run(['sudo', 'nmap', '--send-ip ', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
-        
+
         #port scanning
 
 
@@ -245,7 +245,7 @@ class nmap_api(APIView):
                 result = subprocess.run(tcp_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
                 return Response(result.stdout)
             return Response("No UDP or TCP ports specified.", status=400)
-        
+
         elif scan_type == "Scan Ports by UDP":
             ip = request.data.get('ip')
             udp_ports = request.data.get('udp_ports')
@@ -271,8 +271,6 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-r', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
         #Version Detection
-
-
 
         elif scan_type == "Operating System Detection":
             ip = request.data.get('ip')
@@ -358,56 +356,56 @@ class nmap_api(APIView):
             badsum_command = ['sudo', 'nmap', '--badsum', ip]
             result = subprocess.run(badsum_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
-        
+
         #Troubleshooting And Debugging
         elif scan_type == "Getting Help":
             ip = request.data.get('ip')
             command = ['sudo', 'nmap', '-h']
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-            return Response(result.stdout)        
+            return Response(result.stdout)
 
         elif scan_type == "Display Nmap Version":
             ip = request.data.get('ip')
             command = ['sudo', 'nmap', '-V']
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-            return Response(result.stdout)  
+            return Response(result.stdout)
 
         elif scan_type == "Verbose Output":
             ip = request.data.get('ip')
             command = ['sudo', 'nmap', '-v',ip]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-            return Response(result.stdout)    
+            return Response(result.stdout)
 
         elif scan_type == "Debugging":
             ip = request.data.get('ip')
             command = ['sudo', 'nmap', '-d', ip]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-            return Response(result.stdout)    
+            return Response(result.stdout)
 
         elif scan_type == "Display Port State Reason":
             ip = request.data.get('ip')
             command = ['sudo', 'nmap', '-reason', ip]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-            return Response(result.stdout)  
+            return Response(result.stdout)
 
         elif scan_type == "Trace Packets":
             ip = request.data.get('ip')
             command = ['sudo', 'nmap', '--packet-trace', ip]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-            return Response(result.stdout) 
+            return Response(result.stdout)
 
         elif scan_type == "Display Host Networking":
             ip = request.data.get('ip')
             command = ['sudo', 'nmap', '--iflist', ip]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-            return Response(result.stdout)  
+            return Response(result.stdout)
 
         elif scan_type == "Display Port State Reason":
             ip = request.data.get('ip')
             interface = request.data.get('interface')
             command = ['sudo', 'nmap', '-e',interface, ip]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-            return Response(result.stdout)  
+            return Response(result.stdout)
 
         # #NMAP Scripting Engine
 
@@ -416,47 +414,47 @@ class nmap_api(APIView):
         #     ip = request.data.get('ip')
         #     command = ['sudo', 'nmap', '--iflist', ip]
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-        #     return Response(result.stdout)  
+        #     return Response(result.stdout)
 
 
         # elif scan_type == "Display Host Networking":
         #     ip = request.data.get('ip')
         #     command = ['sudo', 'nmap', '--iflist', ip]
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-        #     return Response(result.stdout)  
+        #     return Response(result.stdout)
 
         # elif scan_type == "Display Host Networking":
         #     ip = request.data.get('ip')
         #     command = ['sudo', 'nmap', '--iflist', ip]
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-        #     return Response(result.stdout)  
+        #     return Response(result.stdout)
 
         # elif scan_type == "Display Host Networking":
         #     ip = request.data.get('ip')
         #     command = ['sudo', 'nmap', '--iflist', ip]
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-        #     return Response(result.stdout)  
+        #     return Response(result.stdout)
 
         # elif scan_type == "Display Host Networking":
         #     ip = request.data.get('ip')
         #     command = ['sudo', 'nmap', '--iflist', ip]
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-        #     return Response(result.stdout)  
+        #     return Response(result.stdout)
 
         # elif scan_type == "Display Host Networking":
         #     ip = request.data.get('ip')
         #     command = ['sudo', 'nmap', '--iflist', ip]
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-        #     return Response(result.stdout)  
+        #     return Response(result.stdout)
 
         else:
             return Response("Enter a valid Scan Type")
-        
-    
+
+
 class volatality_api(APIView):
-    
+
     def post(self, request):
-        
+
         scan_type = request.data.get('scan_type')
         if scan_type == 'imageinfo':
             path = request.data.get('path')
@@ -467,28 +465,28 @@ class volatality_api(APIView):
 
 
 class wireshark_api(APIView):
-    
+
     def post (self,request):
         scan_type = request.data.get('scan_type')
         if scan_type == 'ifconfig':
             command = ['sudo', 'ifconfig']
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
-        
+
         elif scan_type == 'capture the process':
             port = request.data.get('port')
             count = request.data.get('count')
             command = ['sudo', 'tshark', '-i', port, '-c', count]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
-        
+
         elif scan_type == 'capture from specified interface':
             interface_number = request.data.get('interface_number')
             count = request.data.get('count')
             command = ['sudo', 'tshark', '-i', interface_number, '-c', count]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
-        
+
         elif scan_type == "capture packets from ports": #issue
             port = request.data.get('port')
             port_num = request.data.get('port_num')
@@ -497,20 +495,184 @@ class wireshark_api(APIView):
             command = ['sudo', 'tshark', '-i', port, '-f', port_num, '-c', count]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
-        
+
         elif scan_type == "capture packet for duration":
             port = request.data.get('port')
             time = request.data.get('time')
             command = ['sudo', 'tshark', '-i', port, '-a', 'duration:'+time]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
-        
-        
-        
-        
+
+        elif scan_type == "capture packet for filesize":
+            port = request.data.get('port')
+            size = request.data.get('size')
+            command = ['sudo', 'tshark', '-i', port, '-a', 'duration:'+size]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+
+class exiftool_api(APIView):
+
+    def post(self,request):
+        scan_type = request.data.get("scan_type")
+        if scan_type == "Extract information from a file":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "Print all meta information":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "Print common meta information":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", "-common", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "Find image size and exposure time":#
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", "-s", "-ImageSize", "-ExposureTime", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        # elif scan_type == "Print formatted date/time for all JPG files in the current directory":#
+        #     location = request.data.get('location')
+        #     command = ['sudo', "exiftool", "-s", "-ImageSize", "-ExposureTime", location]
+        #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+        #     return Response(result.stdout)
+
+        elif scan_type == "Extract image resolution from EXIF IFD1":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", "-IFD1:XResolution", "-IFD1:YResolution", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "all author-related XMP information from an image":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", "-xmp:author:all", "-a", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "Print one line of output containing the file name":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", '"$filename has date $dateTimeOriginal"', "-q", "-f", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "GPS positions from an AVCHD video":
+            location = request.data.get('location')
+            command = ['sudo', "exiftool", "-ee", "-p", '"$gpslatitude, $gpslongitude, $gpstimestamp"', location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+
+class Strings_api(APIView):
+
+    def post(self,request):
+        scan_type = request.data.get('scan_type')
+
+        if scan_type == "strings of printable characters in files":
+            location = request.data.get('location')
+            command = ['sudo', "strings", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "sequences that are at least 4 characters long":
+            location = request.data.get('location')
+            command = ['sudo', "strings","-n", "2", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "Strings to also display the offsets":
+            location = request.data.get('location')
+            command = ['sudo', "strings", "-t", "d", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "may or may not scan the whole input file":
+            location = request.data.get('location')
+            command = ['sudo', "strings", "-a", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "strings of printable characters in files":
+            location = request.data.get('location')
+            command = ['sudo', "strings", "-d", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "separator used by Strings is a newline":
+            location = request.data.get('location')
+            command = ['sudo', "strings", "-s","[[[]]]", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+class Binwalk_api(APIView):
+    def post(self,request):
+        scan_type = request.data.get('scan_type')
+        if scan_type == "basic scan on the specified file":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "specific file signatures ":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-S", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "recursive scan":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-r", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "entropy analysis":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-E", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "recursive signature scan":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-C", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "only display results":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-q", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "Extract and Display Disassembly":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-A", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "Extract and Display Metadata":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-M", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
+
+        elif scan_type == "Enable Debugging Output":
+            location = request.data.get('location')
+            command = ['sudo', "binwalk", "-d", location]
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            return Response(result.stdout)
 
 
 
 
 
-        
+
+
+
+
