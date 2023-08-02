@@ -461,7 +461,7 @@ class volatality_api(APIView):
             command = ['sudo', 'volatility', '-l', path, 'imageinfo']
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
-        # elif scan_type == '':
+        
 
 
 class wireshark_api(APIView):
@@ -667,11 +667,4 @@ class Binwalk_api(APIView):
             command = ['sudo', "binwalk", "-d", location]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)  
-           
-        
 
-
-
-
-
-        

@@ -4,8 +4,8 @@ from .views import *
 urlpatterns = [
     # path('admin/', admin.site.urls),
     # path('', include('api.urls'))
-    path ('namp/',nmap_api.as_view(),name='test' ),
-    # path ('volatility/', volatality_api.as_view() ),
+    path ('nmap/',nmap_api.as_view(),name='test' ),
+    path ('volatility/', volatality_api.as_view() ),
     path ('wireshark/', wireshark_api.as_view()),
     path ('exiftool/',exiftool_api.as_view()),
     path ('strings/',Strings_api.as_view()),

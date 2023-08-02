@@ -1,67 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Electron App</title>
+    <title>nmap_api Frontend</title>
+    <style>
+        /* Center the popup box */
+        #popup-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+    </style>
 </head>
 <body>
-    <form id="getDataForm">
-      <label for="scanType">Scan Type:</label>
-      <input type="text" id="scanType" name="scanType" required><br><br>
+    <h1>nmap_api Frontend</h1>
+    
+    <!-- Single target scan -->
+    <h2>Single target scan</h2>
+    <label for="single-ip">Enter IP Address:</label>
+    <input type="text" id="single-ip">
+    <button onclick="scanSingleTarget()">Scan</button>
 
-      <label for="portNum">Port Number:</label>
-      <input type="text" id="portNum" name="portNum" required><br><br>
+    <!-- Multiple targets scan -->
+    <h2>Multiple targets scan</h2>
+    <label for="multi-ips">Enter IP Addresses (comma-separated):</label>
+    <input type="text" id="multi-ips">
+    <button onclick="scanMultipleTargets()">Scan</button>
 
-      <label for="time">Time:</label>
-      <input type="text" id="time" name="time" required><br><br>
+    <!-- Range of hosts scan -->
+    <h2>Range of hosts scan</h2>
+    <label for="range-ip">Enter Start IP Address:</label>
+    <input type="text" id="range-ip">
+    <label for="range-count">Enter IP Count:</label>
+    <input type="number" id="range-count" min="1" value="1">
+    <button onclick="scanRangeOfHosts()">Scan</button>
 
-      <label for="location">Location:</label>
-      <input type="text" id="location" name="location" required><br><br>
+    <!-- Entire Subnet scan -->
+    <h2>Entire Subnet scan</h2>
+    <label for="subnet-ip">Enter IP Address:</label>
+    <input type="text" id="subnet-ip">
+    <label for="subnet-mask">Enter Subnet Mask:</label>
+    <input type="number" id="subnet-mask" min="1" max="32" value="24">
+    <button onclick="scanEntireSubnet()">Scan</button>
 
-      <button type="submit">Get Data</button>
-    </form>
-
-    <div id="dataContainer"></div>
+    <div id="popup-container" style="display: none;"></div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const getDataForm = document.getElementById('getDataForm');
-        const dataContainer = document.getElementById('dataContainer');
+        function scanSingleTarget() {
+            const ip = document.getElementById("single-ip").value;
+            const data = { scan_type: "Single target", ip: ip };
+            sendScanRequest(data);
+        }
 
-        getDataForm.addEventListener('submit', (event) => {
-          event.preventDefault();
+        function scanMultipleTargets() {
+            const ips = document.getElementById("multi-ips").value.split(",");
+            const data = { scan_type: "Multiple_Targets", ip: ips };
+            sendScanRequest(data);
+        }
 
-          // Collect data from the form
-          const requestData = {
-            scan_type: document.getElementById('scanType').value,
-            port_num: document.getElementById('portNum').value,
-            time: document.getElementById('time').value,
-            location: document.getElementById('location').value,
-          };
+        function scanRangeOfHosts() {
+            const startIp = document.getElementById("range-ip").value;
+            const ipCount = document.getElementById("range-count").value;
+            const data = { scan_type: "range of host", start_ip: startIp, ip_count: ipCount };
+            sendScanRequest(data);
+        }
 
-          // Make the fetch POST request
-          fetch('http://127.0.0.1:8000/binwalk/', {
-            method: 'POST', // Specify the HTTP method as POST
-            headers: {
-              'Content-Type': 'application/json', // Set the content type to JSON
-            },
-            body: JSON.stringify(requestData), // Convert the data to JSON and send in the request body
-          })
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return response.json();
+        function scanEntireSubnet() {
+            const ip = document.getElementById("subnet-ip").value;
+            const subnet = document.getElementById("subnet-mask").value;
+            const data = { scan_type: "Entire Subnet", ip: ip, subnet: subnet };
+            sendScanRequest(data);
+        }
+
+        function sendScanRequest(data) {
+            fetch("http://127.0.0.1:8000/nmap/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
             })
-            .then(data => {
-              // Display the fetched data in the container
-              dataContainer.innerText = JSON.stringify(data, null, 2);
+            .then(response => response.text())
+            .then(result => {
+                displayPopup(result);
             })
             .catch(error => {
-              console.error('Error:', error);
-              dataContainer.innerText = 'Error fetching data';
+                console.error("Error occurred:", error);
             });
-        });
-      });
+        }
+
+        function displayPopup(message) {
+            const popupContainer = document.getElementById("popup-container");
+            popupContainer.innerHTML = `<pre>${message}</pre>`;
+            popupContainer.style.display = "block";
+        }
     </script>
 </body>
 </html>
