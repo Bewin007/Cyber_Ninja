@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real-time Bar Chart</title>
+  <link rel="stylesheet" href="../Style/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript" src="sprinkle.js"></script>
+</head>
+<body>
+    <style>
+        body {
+            /* Set background properties */
+            background-image: url("../components/cyber ninja frontpag.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            /* Center the content using flexbox */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Set the height to occupy the full viewport */
+            height: 100vh;
+            /* Remove scrolling */
+            overflow: hidden;
+        }
+        .button {
+            position: absolute;
+            bottom: 7%;
+            left: 50%;
+            margin-left: -104.5px; /*104.5px is half of the button's width*/
+            background-color: black;
+            color: white;
+            height:5%;
+        }
+        .button:hover{
+            background-color: #FBC400;
+        }
+        .test{
+        height:1000px;
+        
+        }
+    </style>
+
+<button id="navigateButton" class="button">START</button>
+
+<script>
+    // Get a reference to the button element
+    const navigateButton = document.getElementById("navigateButton");
+
+    // Add a click event listener to the button
+    navigateButton.addEventListener("click", function() {
+        // Navigate to index.html when the button is clicked
+        window.location.href = "test.html";
+    });
+</script>
+  
+</body>
+</html>

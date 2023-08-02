@@ -9,6 +9,3 @@ child(executablePath, function(err, data) {
  
     console.log(data.toString());
 });
-
-
-
