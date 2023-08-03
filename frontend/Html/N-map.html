@@ -9,29 +9,29 @@
           gap: 20px;
           }
   
-  .grid-item{
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: black;
-    margin-top:10% ;
- }
- .grid-item p{
-    color: white;
-  }
-  .grid-item h2{
-    color: white;
-  }
-  .grid-item label{
-    color: white;
-  }
-  .grid-item button{
-    background-color: white;
+      .grid-item{
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: black;
+        margin-top:10% ;
+      }
+    .grid-item p{
+        color: white;
+      }
+      .grid-item h2{
+        color: white;
+      }
+      .grid-item label{
+        color: white;
+      }
+      .grid-item button{
+        background-color: white;
 
-  }
-  .grid-item button:hover{
-    background-color: #FBC400;
-  }
+      }
+      .grid-item button:hover{
+        background-color: #FBC400;
+      }
   
         #back:hover{
             background-color: #FBC400;
@@ -67,7 +67,7 @@
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
     <input type="text" id="single-ip">
     <button onclick="scanSingleTarget()">Scan</button>
-    <pre style="color: aqua;" id="single-result"></pre>
+    <!-- <pre style="color: aqua;" id="single-result"></pre> -->
       </div>
 
       <div class="grid-item">
@@ -78,7 +78,7 @@
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
     <input type="text" id="multi-ips">
     <button onclick="scanMultipleTargets()">Scan</button>
-    <pre style="color: aqua;" id="multi-result"></pre>
+    <!-- <pre style="color: aqua;" id="multi-result"></pre> -->
       </div>
 
       <div class="grid-item">
@@ -91,7 +91,7 @@
     <label for="range-count">Enter IP Count:</label>
     <input type="number" id="range-count" min="1" value="1">
     <button onclick="scanRangeOfHosts()">Scan</button>
-    <pre id="range-result"></pre>
+    <!-- <pre id="range-result"></pre> -->
       </div>
 
       <div class="grid-item">
@@ -104,7 +104,7 @@
     <label for="subnet-mask">Enter Subnet Mask:</label>
     <input type="number" id="subnet-mask" min="1" max="32" value="24">
     <button onclick="scanEntireSubnet()">Scan</button>
-    <pre id="subnet-result"></pre>
+    <!-- <pre id="subnet-result"></pre> -->
 
       </div>
       <div class="grid-item">
@@ -115,7 +115,7 @@
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
         <input type="text" id="aggressive-scan">
         <button onclick="scanAggressive()">Scan</button>
-        <pre id="aggressive-result"></pre>
+        <!-- <pre id="aggressive-result"></pre> -->
           </div>
           <script>
             function scanAggressive() {
@@ -133,7 +133,7 @@
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
         <input type="text" id="multi-ipv6">
         <button onclick="scanIpv6()">Scan</button>
-        <pre id="IPv6"></pre>
+        <!-- <pre id="IPv6"></pre> -->
           </div>
           <script>
             function scanIpv6() {
@@ -151,7 +151,7 @@
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
         <input type="text" id="ping-only-scan">
         <button onclick="pingOnlyscan()">Scan</button>
-        <pre id="ping-only-scan"></pre>
+        <!-- <pre id="ping-only-scan"></pre> -->
           </div>
           <script>
             function pingOnlyscan() {
@@ -369,7 +369,7 @@
         function scanSingleTarget() {
             const ip = document.getElementById("single-ip").value;
             const data = { scan_type: "Single target", ip: ip };
-            sendScanRequest(data, "single-result");
+            sendScanRequest(data);
         }
 
         function scanMultipleTargets() {
@@ -392,7 +392,7 @@
             sendScanRequest(data, "subnet-result");
         }
 
-        function sendScanRequest(data, resultElementId) {
+        function sendScanRequest(data) {
             fetch("http://127.0.0.1:8000/nmap/", {
                 method: "POST",
                 headers: {
@@ -402,8 +402,9 @@
             })
             .then(response => response.text())
             .then(result => {
-                document.getElementById(resultElementId).textContent = result;
-                console.log(result)
+                // document.getElementById(resultElementId).textContent = result;
+                // console.log(result)
+                alert(result);
             })
             .catch(error => {
                 console.error("Error occurred:", error);
