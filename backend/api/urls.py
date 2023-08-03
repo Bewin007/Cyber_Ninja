@@ -10,4 +10,6 @@ urlpatterns = [
     path ('exiftool/',exiftool_api.as_view()),
     path ('strings/',Strings_api.as_view()),
     path ('binwalk/',Binwalk_api.as_view()),
+    path ('remove/',RemoveContentFromTestHTML.as_view()),
+    path('process-html/', ProcessHTMLView.as_view()),
 ]

@@ -16,6 +16,23 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.permissions import IsAuthenticated
 import subprocess
 import json
+from bs4 import BeautifulSoup
+from django.utils import timezone
+import os
+
+class RemoveContentFromTestHTML(APIView):
+    def get(self, request):
+        file_path = "/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html"
+        
+        # Check if the file exists
+        if file_path:
+            # Open the file in write mode to remove its content
+            with open(file_path, "w") as file:
+                file.truncate(0)  # Truncate the file to remove its content
+            return Response({"message": "Content removed from the file."})
+        else:
+            return Response({"error": "File not found."}, status=404)
+        
 
 class nmap_api(APIView):
     
@@ -27,14 +44,24 @@ class nmap_api(APIView):
             ip = request.data.get('ip')
             result = subprocess.run(['sudo', 'nmap', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
-            formatted_output = output.replace('\n', '')
-            return Response(formatted_output)
+            formatted_output = output.replace('\n', '<br>')
+            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+                file.write(f"<h2>{scan_type}</h2>\n")
+                file.write(f"<p>{formatted_output}</p>\n")
+            output_to_send = output.replace('\n', '')
+            return Response(output_to_send)
 
         elif scan_type == 'Multiple_Targets':
             ip_addresses = request.data.get('ip')
             command = ['sudo', 'nmap'] + ip_addresses
             result =  subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
-            return Response(result.stdout)
+            output = result.stdout
+            formatted_output = output.replace('\n', '<br>')
+            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+                file.write(f"<h2>{scan_type}</h2>\n")
+                file.write(f"<p>{formatted_output}</p>\n")
+            output_to_send = output.replace('\n', '')
+            return Response(output_to_send)
 
         elif scan_type == "range of host":
             start_ip = request.data.get('start_ip')
@@ -52,6 +79,7 @@ class nmap_api(APIView):
             subnet = request.data.get('subnet')
             ip_range = f"{ip}/{subnet}"
             command = ['sudo', 'nmap', '-O', ip_range]
+            print(command)
             result =  subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
 
@@ -64,6 +92,7 @@ class nmap_api(APIView):
         #     # return Response("a")
         elif scan_type == "Aggressive Scan":
             ip = request.data.get('ip')
+            print(ip)
             result =  subprocess.run(['sudo', 'nmap', '-A', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
 
@@ -500,15 +529,19 @@ class wireshark_api(APIView):
             port = request.data.get('port')
             time = request.data.get('time')
             command = ['sudo', 'tshark', '-i', port, '-a', 'duration:'+time]
+            print(command)
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
-
+        
         elif scan_type == "capture packet for filesize":
             port = request.data.get('port')
             size = request.data.get('size')
-            command = ['sudo', 'tshark', '-i', port, '-a', 'duration:'+size]
+            command = ['sudo', 'tshark', '-i', port, '-a', 'filesize:'+size]
+            print(command)
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
+        
+        print("1")
         
 
 class exiftool_api(APIView):
@@ -578,6 +611,7 @@ class Strings_api(APIView):
         if scan_type == "strings of printable characters in files":
             location = request.data.get('location')
             command = ['sudo', "strings", location]
+            print(command)
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
         
@@ -668,3 +702,79 @@ class Binwalk_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)  
 
+
+
+
+
+class ProcessHTMLView(APIView):
+    def get(self, request):
+        file_path = "/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html"
+        output_file_path = "/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/processed_text.txt"
+        
+        # Check if the file exists
+        if file_path:
+            # Read the content of the HTML file
+            with open(file_path, "r") as file:
+                html_content = file.read()
+
+            # Parse the HTML content using BeautifulSoup
+            soup = BeautifulSoup(html_content, "html.parser")
+            
+            # Extract h2 and p tags
+            h2_tags = soup.find_all("h2")
+            p_tags = soup.find_all("p")
+            
+            # Process and combine the content from h2 and p tags
+            processed_content = ""
+            for h2_tag, p_tag in zip(h2_tags, p_tags):
+                h2_text = h2_tag.get_text().strip()
+                p_text = p_tag.get_text().strip().replace("<br>", "")
+                processed_content += f"{h2_text} (bold text):\n{p_text}\n\n"
+
+            # Save the processed content in a text file
+            with open(output_file_path, "w") as output_file:
+                output_file.write(processed_content)
+
+            return Response({"message": "HTML content processed and saved in a text file."})
+        else:
+            return Response({"error": "File not found."}, status=404)
+        
+
+
+class ProcessHTMLView(APIView):
+    def get(self, request):
+        file_path = "/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html"
+        output_directory = "/home/bewin/Desktop/Cyber_Ninja_Backend/Log"
+        
+        # Check if the file exists
+        if os.path.exists(file_path):
+            # Read the content of the HTML file
+            with open(file_path, "r") as file:
+                html_content = file.read()
+
+            # Parse the HTML content using BeautifulSoup
+            soup = BeautifulSoup(html_content, "html.parser")
+            
+            # Format h2 tags as bold and p tags as normal text
+            for h2_tag in soup.find_all("h2"):
+                h2_tag.string = f"<b>{h2_tag.string}</b>"
+            
+            for p_tag in soup.find_all("p"):
+                p_tag.unwrap()  # Remove the <p> tags, but retain the text and its formatting
+            
+            # Remove <br> tags
+            for br_tag in soup.find_all("br"):
+                br_tag.extract()
+
+            # Generate the filename with the current timestamp
+            timestamp = timezone.now().strftime("%Y-%m-%d_%H-%M-%S")
+            output_filename = f"{timestamp}.txt"
+            output_file_path = os.path.join(output_directory, output_filename)
+
+            # Save the processed content in a text file
+            with open(output_file_path, "w") as output_file:
+                output_file.write(str(soup))
+
+            return Response({"message": f"HTML content processed and saved in {output_filename}."})
+        else:
+            return Response({"error": "File not found."}, status=404)

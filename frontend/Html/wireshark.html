@@ -56,132 +56,154 @@
     </style>
 </head>
 <body>
-    <h1>N-Map</h1>
+    <h1>WireShark</h1>
     <div class="grid-container">
       <div class="grid-item">
     
-    <!-- Single target scan -->
-    <h2>Single target scan</h2>
-    <label for="single-ip">Enter IP Address:</label>
+    <!-- ifconfig-->
+    <h2>IfConfig</h2>
+    <label for="ifconfig">Enter ifconfig:</label>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-    <input type="text" id="single-ip">
-    <button onclick="scanSingleTarget()">Scan</button>
-    <pre id="single-result"></pre>
+    <!-- <input type="text" id="ifconfig"> -->
+    <button onclick="ifconfig()">Scan</button>
+    <pre id="if-config"></pre>
       </div>
+      <script>
+        function ifconfig() {
+        // const command = document.getElementById("ifconfig").value;
+        const data = { scan_type: "ifconfig" };
+        sendScanRequest(data, "if-config");
+    }
+      </script>
+
 
       <div class="grid-item">
 
-    <!-- Multiple targets scan -->
-    <h2>Multiple targets scan</h2>
-    <label for="multi-ips">Enter IP Addresses (comma-separated):</label>
+    <!--capture the process-->
+    <h2>capture the process</h2>
+    <label for="capture-the-process">Enter capture the process</label>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-    <input type="text" id="multi-ips">
-    <button onclick="scanMultipleTargets()">Scan</button>
-    <pre id="multi-result"></pre>
+    <input type="text" id="port-capture">
+    <input type="text" id="count-capture">
+    <button onclick="capturetheprocess()">Scan</button>
+    <pre id="capture-the-process"></pre>
       </div>
+      <script>
+        function capturetheprocess() {
+        const port = document.getElementById("port-capture").value;
+        const count = document.getElementById("count-capture").value;
+        const data = { scan_type: "capture the process", port: port, count: count };
+        sendScanRequest(data);
+    }
+      </script>
 
       <div class="grid-item">
 
-    <!-- Range of hosts scan -->
-    <h2>Range of hosts scan</h2>
-    <label for="range-ip">Enter Start IP Address:</label>
+    <!--capture from specified interface-->
+    <h2>to remove</h2>
+    <label for="capture-from-specified-interface">Enter capture from specified interface:</label>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-    <input type="text" id="range-ip">
-    <label for="range-count">Enter IP Count:</label>
-    <input type="number" id="range-count" min="1" value="1">
-    <button onclick="scanRangeOfHosts()">Scan</button>
-    <pre id="range-result"></pre>
+    <input type="text" id="interface_number">
+    <input type="text" id="count-capture">
+    <button onclick="capturefromspecifiedinterface()">Scan</button>
+    <pre id="capture-from-specified-interface"></pre>
       </div>
+      <script>
+        function capturefromspecifiedinterface() {
+        const interface_number = document.getElementById("interface_number").value;
+        const count = document.getElementById("count-capture").value;
+        const data = { scan_type: "capture from specified interface", interface_number: interface_number, count:count };
+        sendScanRequest(data, "capture-from-specified-interface");
+    }
+      </script>
 
       <div class="grid-item">
 
-    <!-- Entire Subnet scan -->
-    <h2>Entire Subnet scan</h2>
-    <label for="subnet-ip">Enter IP Address:</label>
+    <!--capture packets from ports-->
+    <h2>capture packets from ports</h2>
+    <label for="capture-packets-from-ports">Enter capture packets from ports:</label>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-    <input type="text" id="subnet-ip">
-    <label for="subnet-mask">Enter Subnet Mask:</label>
-    <input type="number" id="subnet-mask" min="1" max="32" value="24">
-    <button onclick="scanEntireSubnet()">Scan</button>
-    <pre id="subnet-result"></pre>
+    <input type="text" id="capture-packets-from-ports">
+    <input type="text" id="capture-packets-from-num">
+    <input type="text" id="capture-packets-from-count">
+    <button onclick="capturepacketsfromports()">Scan</button>
+    <pre id="capture-packets-from-ports"></pre>
 
       </div>
+      <script>
+        function capturepacketsfromports() {
+        const port = document.getElementById("capture-packets-from-ports").value;
+        const port_num = document.getElementById("capture-packets-from-num").value;
+        const count = document.getElementById("capture-packets-from-count").value;
+        const data = { scan_type: "capture packets from ports", port:port, port_num:port_num, count:count };
+        sendScanRequest(data, "capture-packets-from-ports");
+    }
+      </script>
       <div class="grid-item">
     
-        <!-- Aggressive Scan -->
-        <h2>Aggressive Scan</h2>
-        <label for="aggressive-scan">Enter Aggressive scan:</label>
+        <!--capture packet for duration-->
+        <h2>capture packet for duration</h2>
+        <label for="capture-packet-for-duration">Enter capture packet for duration:</label>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-        <input type="text" id="aggressive-scan">
-        <button onclick="scanAggressive()">Scan</button>
-        <pre id="aggressive-result"></pre>
+        <input type="text" id="duration-port">
+        <input type="text" id="duration-time">
+        <button onclick="capturepacketforduration()">Scan</button>
+        <pre id="capture-packet-for-duration"></pre>
           </div>
           <script>
-            function scanAggressive() {
-            const ip = document.getElementById("aggresive-scan").value;
-            const data = { scan_type: "Aggressive Scan", ip: ip };
-            sendScanRequest(data, "aggressive-result");
+            function capturepacketforduration() {
+            const port = document.getElementById("duration-port").value;
+            const time = document.getElementById("duration-time").value;
+            const data = { scan_type: "capture packet for duration", port: port, time:time };
+            sendScanRequest(data, "capture-packet-for-duration");
         }
           </script>
     
           <div class="grid-item">
     
-        <!-- IPv6 -->
-        <h2>IPv6</h2>
-        <label for="IPv6">Enter IPv6 Addresses:</label>
+        <!--capture packet for filesize-->
+        <h2>we are not saving ao useless</h2>
+        <label for="capture-packet-for-filesize">Enter IPv6 Addresses:</label>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-        <input type="text" id="multi-ipv6">
-        <button onclick="scanIpv6()">Scan</button>
-        <pre id="IPv6"></pre>
+        <input type="text" id="capture-packet-port">
+        <input type="text" id="capture-packet-size">
+        <button onclick="capturepacketforfilesize()">Scan</button>
+        <pre id="capture-packet-for-filesize"></pre>
           </div>
           <script>
-            function scanIpv6() {
-            const ip = document.getElementById("multi-ipv6").value;
-            const data = { scan_type: "IPv6", ip: ip };
-            sendScanRequest(data, "IPv6");
+            function capturepacketforfilesize() {
+            const port = document.getElementById("capture-packet-port").value;
+            const size = document.getElementById("capture-packet-size").value;
+            const data = { scan_type: "capture packet for filesize", port: port, size:size };
+            sendScanRequest(data, "capture-packet-for-filesize");
         }
           </script>
     
-          <div class="grid-item">
-    
-        <!--Ping Only Scan-->
-        <h2>Ping Only scan</h2>
-        <label for="Ping Only Scan">Ping Only Scan:</label>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-        <input type="text" id="ping-only-scan">
-        <button onclick="pingOnlyscan()">Scan</button>
-        <pre id="ping-only-scan"></pre>
-          </div>
-          <script>
-            function pingOnlyscan() {
-            const ip = document.getElementById("ping-only-scan").value;
-            const data = { scan_type: "Ping Only Scan", ip: ip };
-            sendScanRequest(data, "ping-out-scan");
-        }
-          </script>
-    
-          <div class="grid-item">
-    
-        <!-- NO Ping -->
-        <h2>NO Ping</h2>
-        <label for="no-ping">Enter NO Ping:</label>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-        <input type="text" id="no-ping">
-        <button onclick="Noping()">Scan</button>
-        <pre id="no-ping-result"></pre>
-        
-          </div>
-          <script>
-            function Noping() {
-            const ip = document.getElementById("no-ping").value;
-            const data = { scan_type: "NO Ping", ip: ip };
-            sendScanRequest(data, "no-ping-result");
-        }
-          </script>
+         
+    </div>
           <button
           id="back" class="button">Back
       </button>
       <script>
+        function sendScanRequest(data) {
+                            console.log(data)
+                              fetch(" http://127.0.0.1:8000/wireshark/", {
+                                  method: "POST",
+                                  headers: {
+                                      "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify(data),
+                              })
+                              .then(response => response.text())
+                              .then(result => {
+                                  // document.getElementById(resultElementId).textContent = result;
+                                  console.log(result)
+                                  alert(result);
+                              })
+                              .catch(error => {
+                                  console.error("Error occurred:", error);
+                              });
+                          }
         // Get a reference to the button element
         const navigateButton1 = document.getElementById("back");
       

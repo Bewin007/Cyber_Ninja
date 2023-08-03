@@ -1,0 +1,6 @@
+<h2>&lt;b&gt;Single target&lt;/b&gt;</h2>
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-08-03 18:21 UTCNmap scan report for 192.168.1.1Host is up (0.0023s latency).Not shown: 998 filtered tcp ports (no-response)PORT    STATE SERVICE80/tcp  open  http443/tcp open  httpsNmap done: 1 IP address (1 host up) scanned in 17.63 seconds
+<h2>&lt;b&gt;Single target&lt;/b&gt;</h2>
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-08-03 18:21 UTCNmap scan report for 192.168.1.1Host is up (0.0013s latency).Not shown: 998 filtered tcp ports (no-response)PORT    STATE SERVICE80/tcp  open  http443/tcp open  httpsNmap done: 1 IP address (1 host up) scanned in 17.72 seconds
+<h2>&lt;b&gt;Single target&lt;/b&gt;</h2>
+Starting Nmap 7.93 ( https://nmap.org ) at 2023-08-03 18:21 UTCNmap scan report for 192.168.1.1Host is up (0.0022s latency).Not shown: 998 filtered tcp ports (no-response)PORT    STATE SERVICE80/tcp  open  http443/tcp open  httpsNmap done: 1 IP address (1 host up) scanned in 17.08 seconds

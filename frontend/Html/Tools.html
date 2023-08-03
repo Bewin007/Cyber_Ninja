@@ -107,9 +107,33 @@
         </button>
         
 
-
+        <button id="processButton" onclick="processHTML()">Save</button>
     </div>
     <script>
+        function processHTML() {
+            fetch('http://127.0.0.1:8000/process-html/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the response message or handle errors
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Add a click event listener to the button
+        const processButton = document.getElementById('processButton');
+        processButton.addEventListener('click', processHTML);
+
+
+
+
         // Get a reference to the button element
         const navigateButton1 = document.getElementById("back");
     

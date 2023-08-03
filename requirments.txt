@@ -9,4 +9,4 @@ django-cors-headers
 cryptography
 drf-jwt
 pyjwt
-
+beautifulsoup4

@@ -59,12 +59,33 @@
       Your browser does not support the video tag.
     </video>
     <div class="button-container">
-      <button id="navigateButton" class="button">START</button>
+      <button id="navigateButton" class="button" onclick="sendScanRequest()">START</button>
     </div>
   </div>
 
   <script>
     // Get a reference to the button element
+
+        function sendScanRequest() {
+          
+            // console.log(data)
+            fetch("http://127.0.0.1:8000/remove/", {
+              method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the response message or handle errors
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+
     const navigateButton = document.getElementById("navigateButton");
 
     // Add a click event listener to the button
