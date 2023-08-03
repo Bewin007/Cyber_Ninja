@@ -277,7 +277,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-O', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
 
-        elif scan_type == " Guess an Unknown OS":
+        elif scan_type == "Guess an Unknown OS":
             ip = request.data.get('ip')
             result =  subprocess.run(['sudo', 'nmap', '-O','--osscan guess', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             return Response(result.stdout)
