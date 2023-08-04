@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cyber Ninja</title>
+  <link rel="stylesheet" href="../Style/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="text/javascript" src="sprinkle.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .button-container {
+      position: absolute;
+      top: 50%;
+      left: 48%;
+      transform: translate(-50%, -50%);
+    }
+
+    .button {
+      background-color: rgba(0, 0, 0, 0); /* Transparent background color */
+      color: rgba(255, 255, 255, 1); /* Fully opaque text color */
+      height: 7%;
+      padding: 15px 30px;
+      font-size: 48px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: rgba(0, 0, 0, 0); /* Fully transparent hover background color */
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <video autoplay loop muted>
+      <source src="../components/front_page.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="button-container">
+      <button id="navigateButton" class="button" onclick="sendScanRequest()">START</button>
+    </div>
+  </div>
+
+  <script>
+    // Get a reference to the button element
+
+        function sendScanRequest() {
+          
+            // console.log(data)
+            fetch("http://127.0.0.1:8000/remove/", {
+              method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the response message or handle errors
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+
+    const navigateButton = document.getElementById("navigateButton");
+
+    // Add a click event listener to the button
+    navigateButton.addEventListener("click", function() {
+      // Navigate to first.html when the button is clicked
+      window.location.href = "Tools.html";
+    });
+  </script>
+</body>
+</html>

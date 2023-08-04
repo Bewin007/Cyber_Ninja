@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>nmap_api Frontend</title>
+    <style>
+      .grid-container {
+          display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+  gap: 20px;
+  }
+  
+  .grid-item{
+    border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: black;
+  margin-top:10% ;
+ }
+ .grid-item p{
+    color: white;
+  }
+  .grid-item h2{
+    color: white;
+  }
+  .grid-item label{
+    color: white;
+  }
+  .grid-item button{
+    background-color: white;
+
+  }
+  .grid-item button:hover{
+    background-color: #FBC400;
+  }
+  #back:hover{
+            background-color: #FBC400;
+        }
+        #back{
+          position: absolute;
+            bottom: -280%;
+            left: 50%;
+            right: 50%;
+            margin-left: -104.5px; /*104.5px is half of the button's width*/
+            background-color: black;
+            color: white;
+            height:7%;
+            padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>string</h1>
+    <div class="grid-container">
+      <div class="grid-item">
+    
+    <!-- Strings of printable characters in files -->
+    <h2>Strings of printable characters in files</h2>
+    <label for="strings">Enter strings of printable characters in files:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="scanStrings">
+    <button onclick="scanStrings('strings')">Scan</button>
+    <pre id="result-strings"></pre>
+</div>
+      <script>
+        function scanStrings() {
+            const ip = document.getElementById("scanStrings").value;
+            const data = { scan_type: "strings of printable characters in files", location: ip };
+            sendScanRequest(data);
+        }
+      </script>
+
+     
+
+      <div class="grid-item">
+
+    <!-- sequences that are at least 4 characters long-->
+    <h2>sequences that are at least 4 characters long</h2>
+    <label for="sequences that are at least 4 characters long">Enter sequences that are at least 4 characters long</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="sequences that are at least 4 characters long">
+    <button onclick="sequencesthatareatleastcharacterslong()">Scan</button>
+    <pre id="sequences-that-are-at-least-4-characters-long"></pre>
+      </div>
+      <script>
+        function sequencesthatareatleastcharacterslong() {
+        const ip = document.getElementById("sequences that are at least 4 characters long").value;
+        const data = { scan_type: "sequences that are at least 4 characters long", location: ip };
+        sendScanRequest(data, "sequences-that-are-at-least-4-characters-long");
+    }
+      </script>
+
+
+      <div class="grid-item">
+
+    <!-- Strings to also display the offsets -->
+    <h2>Strings to also display the offsets</h2>
+    <label for="Strings to also display the offsets">Enter Strings to also display the offsets:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="Strings-to-also-display">
+    <button onclick="Stringstoalsodisplaytheoffsets()">Scan</button>
+    <pre id="Strings-to-also-display-the-offsets"></pre>
+      </div>
+      <script>
+        function Stringstoalsodisplaytheoffsets() {
+        const ip = document.getElementById("Strings-to-also-display").value;
+        const data = { scan_type: "Strings to also display the offsets", location: ip };
+        sendScanRequest(data, "Strings-to-also-display-the-offsets");
+      }
+      </script>
+
+      <div class="grid-item">
+
+    <!-- may or may not scan the whole input file -->
+    <h2>may or may not scan the whole input file</h2>
+    <label for="may or may not scan the whole input file">Enter may or may not scan the whole input file:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="may or may not scan the whole input file">
+    <button onclick="mayormaynotscanthewholeinputfile()">Scan</button>
+    <pre id="may-or-may-not-scan-the-whole-input-file"></pre>
+
+      </div>
+      <script>
+        function mayormaynotscanthewholeinputfile() {
+        const ip = document.getElementById("may or may not scan the whole input file").value;
+        const data = { scan_type: "may or may not scan the whole input file", location: ip };
+        sendScanRequest(data, "may-or-may-not-scan-the-whole-input-file");
+    }
+      </script>
+      <div class="grid-item">
+    
+        <!--strings of printable characters in files -->
+        <h2>strings of printable characters in files</h2>
+        <label for="strings of printable characters in files">Enter strings of printable characters in files:</label>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <input type="text" id="strings of printable characters in files">
+        <button onclick="stringsofprintablecharactersinfiles()">Scan</button>
+        <pre id="strings-of-printable-characters-in-files"></pre>
+          </div>
+          <script>
+            function stringsofprintablecharactersinfiles() {
+            const ip = document.getElementById("strings of printable characters in file").value;
+            const data = { scan_type: "strings of printable characters in file", location: ip };
+            sendScanRequest(data, "strings-of-printable-characters-in-files");
+        }
+          </script>
+    
+          <div class="grid-item">
+    
+        <!-- separator used by Strings is a newline -->
+        <h2>separator used by Strings is a newline</h2>
+        <label for="separator-used-by-Strings-is-a-newline">Enter separator used by Strings is a newline:</label>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <input type="text" id="separator-used-by">
+        <button onclick="separatorusedbyStringsisanewline()">Scan</button>
+        <pre id="separator-used-by-Strings-is-a-newline"></pre>
+          </div>
+          <script>
+            function separatorusedbyStringsisanewline() {
+            const ip = document.getElementById("separator-used-by").value;
+            const data = { scan_type: "separator used by Strings is a newline", location: ip };
+            sendScanRequest(data, "separator-used-by-Strings-is-a-newline");
+        }
+          </script>
+
+          <script>
+          function sendScanRequest(data) {
+            console.log(data)
+              fetch(" http://127.0.0.1:8000/strings/", {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(data),
+              })
+              .then(response => response.text())
+              .then(result => {
+                  // document.getElementById(resultElementId).textContent = result;
+                  console.log(result)
+                  alert(result);
+              })
+              .catch(error => {
+                  console.error("Error occurred:", error);
+              });
+          }
+          </script>
+    
+         
+    </div>
+</body>
+</html>          

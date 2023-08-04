@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Terminal</title>
+    <style>
+        /* Add your CSS styles here */
+        .terminal-container {
+            background-color: #000;
+            color: #fff;
+            font-family: monospace;
+            padding: 10px;
+            overflow-y: auto;
+            height: 300px;
+        }
+
+        #input {
+            background-color: #000;
+            color: #fff;
+            font-family: monospace;
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="terminal-container">
+        <pre id="output">Welcome to the Web Terminal! Type 'help' for commands.</pre>
+        <input type="text" id="input" autofocus />
+    </div>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const outputElement = document.getElementById("output");
+            const inputElement = document.getElementById("input");
+            
+            inputElement.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    const command = inputElement.value.trim();
+                    inputElement.value = "";
+                    outputElement.textContent += `\n> ${command}\n`;
+                    executeCommand(command);
+                }
+            });
+            
+            function executeCommand(command) {
+                // Replace "your-api-endpoint" with the actual endpoint on your Django backend.
+                fetch("http://127.0.0.1:8000/cmd/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ command: command }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    outputElement.innerHTML += `<h2>${command}</h2>\n`;
+                    outputElement.innerHTML += `<p>${data.output}</p>\n`;
+                })
+                .catch(error => {
+                    outputElement.innerHTML += `Error: ${error}\n`;
+                });
+            }
+        });
+        </script>
+        
+</body>
+</html>

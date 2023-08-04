@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>nmap_api Frontend</title>
+    <style>
+      .grid-container {
+          display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+  gap: 20px;
+  }
+  
+  .grid-item{
+    border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: black;
+  margin-top:10% ;
+ }
+ .grid-item p{
+    color: white;
+  }
+  .grid-item h2{
+    color: white;
+  }
+  .grid-item label{
+    color: white;
+  }
+  .grid-item button{
+    background-color: white;
+
+  }
+  .grid-item button:hover{
+    background-color: #FBC400;
+  }
+  #back:hover{
+            background-color: #FBC400;
+        }
+        #back{
+          position: absolute;
+            bottom: -280%;
+            left: 50%;
+            right: 50%;
+            margin-left: -104.5px; /*104.5px is half of the button's width*/
+            background-color: black;
+            color: white;
+            height:7%;
+            padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>WireShark</h1>
+    <div class="grid-container">
+      <div class="grid-item">
+    
+    <!-- ifconfig-->
+    <h2>IfConfig</h2>
+    <label for="ifconfig">Enter ifconfig:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <!-- <input type="text" id="ifconfig"> -->
+    <button onclick="ifconfig()">Scan</button>
+    <pre id="if-config"></pre>
+      </div>
+      <script>
+        function ifconfig() {
+        // const command = document.getElementById("ifconfig").value;
+        const data = { scan_type: "ifconfig" };
+        sendScanRequest(data, "if-config");
+    }
+      </script>
+
+
+      <div class="grid-item">
+
+    <!--capture the process-->
+    <h2>capture the process</h2>
+    <label for="capture-the-process">Enter capture the process</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="port-capture">
+    <input type="text" id="count-capture">
+    <button onclick="capturetheprocess()">Scan</button>
+    <pre id="capture-the-process"></pre>
+      </div>
+      <script>
+        function capturetheprocess() {
+        const port = document.getElementById("port-capture").value;
+        const count = document.getElementById("count-capture").value;
+        const data = { scan_type: "capture the process", port: port, count: count };
+        sendScanRequest(data);
+    }
+      </script>
+
+      <div class="grid-item">
+
+    <!--capture from specified interface-->
+    <h2>to remove</h2>
+    <label for="capture-from-specified-interface">Enter capture from specified interface:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="interface_number">
+    <input type="text" id="count-capture">
+    <button onclick="capturefromspecifiedinterface()">Scan</button>
+    <pre id="capture-from-specified-interface"></pre>
+      </div>
+      <script>
+        function capturefromspecifiedinterface() {
+        const interface_number = document.getElementById("interface_number").value;
+        const count = document.getElementById("count-capture").value;
+        const data = { scan_type: "capture from specified interface", interface_number: interface_number, count:count };
+        sendScanRequest(data, "capture-from-specified-interface");
+    }
+      </script>
+
+      <div class="grid-item">
+
+    <!--capture packets from ports-->
+    <h2>capture packets from ports</h2>
+    <label for="capture-packets-from-ports">Enter capture packets from ports:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="capture-packets-from-ports">
+    <input type="text" id="capture-packets-from-num">
+    <input type="text" id="capture-packets-from-count">
+    <button onclick="capturepacketsfromports()">Scan</button>
+    <pre id="capture-packets-from-ports"></pre>
+
+      </div>
+      <script>
+        function capturepacketsfromports() {
+        const port = document.getElementById("capture-packets-from-ports").value;
+        const port_num = document.getElementById("capture-packets-from-num").value;
+        const count = document.getElementById("capture-packets-from-count").value;
+        const data = { scan_type: "capture packets from ports", port:port, port_num:port_num, count:count };
+        sendScanRequest(data, "capture-packets-from-ports");
+    }
+      </script>
+      <div class="grid-item">
+    
+        <!--capture packet for duration-->
+        <h2>capture packet for duration</h2>
+        <label for="capture-packet-for-duration">Enter capture packet for duration:</label>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <input type="text" id="duration-port">
+        <input type="text" id="duration-time">
+        <button onclick="capturepacketforduration()">Scan</button>
+        <pre id="capture-packet-for-duration"></pre>
+          </div>
+          <script>
+            function capturepacketforduration() {
+            const port = document.getElementById("duration-port").value;
+            const time = document.getElementById("duration-time").value;
+            const data = { scan_type: "capture packet for duration", port: port, time:time };
+            sendScanRequest(data, "capture-packet-for-duration");
+        }
+          </script>
+    
+          <div class="grid-item">
+    
+        <!--capture packet for filesize-->
+        <h2>we are not saving ao useless</h2>
+        <label for="capture-packet-for-filesize">Enter IPv6 Addresses:</label>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <input type="text" id="capture-packet-port">
+        <input type="text" id="capture-packet-size">
+        <button onclick="capturepacketforfilesize()">Scan</button>
+        <pre id="capture-packet-for-filesize"></pre>
+          </div>
+          <script>
+            function capturepacketforfilesize() {
+            const port = document.getElementById("capture-packet-port").value;
+            const size = document.getElementById("capture-packet-size").value;
+            const data = { scan_type: "capture packet for filesize", port: port, size:size };
+            sendScanRequest(data, "capture-packet-for-filesize");
+        }
+          </script>
+    
+         
+    </div>
+          <button
+          id="back" class="button">Back
+      </button>
+      <script>
+        function sendScanRequest(data) {
+                            console.log(data)
+                              fetch(" http://127.0.0.1:8000/wireshark/", {
+                                  method: "POST",
+                                  headers: {
+                                      "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify(data),
+                              })
+                              .then(response => response.text())
+                              .then(result => {
+                                  // document.getElementById(resultElementId).textContent = result;
+                                  console.log(result)
+                                  alert(result);
+                              })
+                              .catch(error => {
+                                  console.error("Error occurred:", error);
+                              });
+                          }
+        // Get a reference to the button element
+        const navigateButton1 = document.getElementById("back");
+      
+        // Add a click event listener to the button
+        navigateButton1.addEventListener("click", function() {
+            // Navigate to index.html when the button is clicked
+            window.location.href = "Tools.html";
+        });
+        </script>
+    </div>
+</body>
+</html>

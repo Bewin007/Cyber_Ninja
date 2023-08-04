@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>nmap_api Frontend</title>
+    <style>
+      .grid-container {
+          display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+  gap: 20px;
+  }
+  
+  .grid-item{
+    border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: black;
+  margin-top:10% ;
+ }
+ .grid-item p{
+    color: white;
+  }
+  .grid-item h2{
+    color: white;
+  }
+  .grid-item label{
+    color: white;
+  }
+  .grid-item button{
+    background-color: white;
+
+  }
+  .grid-item button:hover{
+    background-color: #FBC400;
+  }
+  #back:hover{
+            background-color: #FBC400;
+        }
+        #back{
+          position: absolute;
+            bottom: -280%;
+            left: 50%;
+            right: 50%;
+            margin-left: -104.5px; /*104.5px is half of the button's width*/
+            background-color: black;
+            color: white;
+            height:7%;
+            padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Binwalk</h1>
+    <div class="grid-container">
+      <div class="grid-item">
+    
+    <!--basic scan on the specified file-->
+    <h2>basic scan on the specified file</h2>
+    <label for="basic-scan">Enter basic scan on the specified file:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="basic-scan">
+    <button onclick="basicscan()">Scan</button>
+    <pre id="basic-scan"></pre>
+      </div>
+      <script>
+        function basicscan() {
+        const location = document.getElementById("basic-scan").value;
+        const data = { scan_type: "basic scan on the specified file", location:location };
+        sendScanRequest(data, "basic-scan");
+    }
+      </script>
+       <div class="grid-item">
+       <!--specific file signatures-->
+    <h2>specific file signatures</h2>
+    <label for="specific-file">Enter specific file signatures:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="specific-file">
+    <button onclick="specificfile()">Scan</button>
+    <pre id="specific-file"></pre>
+      </div>
+      <script>
+        function specificfile() {
+        const location = document.getElementById("basic-scan").value;
+        const data = { scan_type: "specific file signatures", location:location };
+        sendScanRequest(data, "specific-file");
+    }
+      </script>
+       <div class="grid-item">
+      <!--recursive scan-->
+    <h2>recursive scan</h2>
+    <label for="recursive-scan">Enter recursive scan:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="recursive-scan">
+    <button onclick="recursivescan()">Scan</button>
+    <pre id="recursive-scan"></pre>
+      </div>
+      <script>
+        function recursivescan() {
+        const location = document.getElementById("recursive-scan").value;
+        const data = { scan_type: "recursive scan", location:location };
+        sendScanRequest(data, "recursive-scan");
+    }
+      </script>
+       <div class="grid-item">
+       <!--entropy analysis-->
+    <h2>entropy analysis</h2>
+    <label for="entropy-analysis">Enter entropy analysis:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="entropy-analysis">
+    <button onclick="entropyanalysis()">Scan</button>
+    <pre id="entropy-analysis"></pre>
+      </div>
+      <script>
+        function entropyanalysis() {
+        const location = document.getElementById("entropy-analysis").value;
+        const data = { scan_type: "entropy analysis", location:location };
+        sendScanRequest(data, "rentropy-analysis");
+    }
+      </script>
+       <div class="grid-item">
+      <!--recursive signature scan-->
+    <h2>recursive signature scan</h2>
+    <label for="recursive-signature">Enter recursive signature scan:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="recursive-signature">
+    <button onclick="recursivesignature()">Scan</button>
+    <pre id="recursive-signature"></pre>
+      </div>
+      <script>
+        function recursivesignature() {
+        const location = document.getElementById("recursive-signature").value;
+        const data = { scan_type: "recursive signature scan", location:location };
+        sendScanRequest(data, "recursive-signature");
+    }
+      </script>
+       <div class="grid-item">
+      <!--only display results-->
+    <h2>only display results</h2>
+    <label for="only-display">Enter only display results:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="only-display">
+    <button onclick="onlydisplay()">Scan</button>
+    <pre id="only-display"></pre>
+      </div>
+      <script>
+        function onlydisplay() {
+        const location = document.getElementById("only-display").value;
+        const data = { scan_type: "only display results", location:location };
+        sendScanRequest(data, "only-display");
+    }
+      </script>
+       <div class="grid-item">
+      <!--Extract and Display Disassembly-->
+    <h2>Extract and Display Disassemblys</h2>
+    <label for="Extract">Enter Extract and Display Disassembly:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="Extract">
+    <button onclick="Extractand()">Scan</button>
+    <pre id="Extract"></pre>
+      </div>
+      <script>
+        function Extractand() {
+        const location = document.getElementById("Extract").value;
+        const data = { scan_type: "Extract and Display Disassembly", location:location };
+        sendScanRequest(data, "Extract");
+    }
+      </script>
+      <div class="grid-item">
+        <!--Extract and Display Metadata-->
+      <h2>Extract and Display Metadata</h2>
+      <label for="Metadata">Enter Extract and Display Disassembly:</label>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+      <input type="text" id="Metadata">
+      <button onclick="DisplayMetadata()">Scan</button>
+      <pre id="Metadata"></pre>
+        </div>
+        <script>
+          function DisplayMetadata() {
+          const location = document.getElementById("Metadata").value;
+          const data = { scan_type: "Extract and Display Metadata", location:location };
+          sendScanRequest(data, "Metadata");
+      }
+        </script>
+        <div class="grid-item">
+          <!--Enable Debugging Output-->
+        <h2>Enable Debugging Output</h2>
+        <label for="Debugging-Output">Enter Enable Debugging Output:</label>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <input type="text" id="Debugging-Output">
+        <button onclick="DebuggingOutput()">Scan</button>
+        <pre id="Debugging-Output"></pre>
+          </div>
+          <script>
+            function DebuggingOutput() {
+            const location = document.getElementById("Debugging-Output").value;
+            const data = { scan_type: "Enable Debugging Output", location:location };
+            sendScanRequest(data, "Debugging-Output");
+        }
+          </script>
+      
+          <button
+          id="back" class="button">Back
+      </button>
+      <script>
+
+function sendScanRequest(data) {
+                    console.log(data)
+                    fetch("http://127.0.0.1:8000/binwalk/", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(data),
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+                        // document.getElementById(resultEleme
+                        
+                        alert(result);
+                    })
+                    .catch(error => {
+                        console.error("Error occurred:", error);
+                    });
+                }
+
+
+
+
+
+        // Get a reference to the button element
+        const navigateButton1 = document.getElementById("back");
+      
+        // Add a click event listener to the button
+        navigateButton1.addEventListener("click", function() {
+            // Navigate to index.html when the button is clicked
+            window.location.href = "Tools.html";
+        });
+        </script>
+    </div>
+</body>
+</html>

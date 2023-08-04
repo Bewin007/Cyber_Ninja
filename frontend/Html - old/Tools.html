@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network</title>
+    <style>
+      .body{
+        background-color: black;
+      }
+        .grid-container {
+          display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+  gap: 20px;
+  }
+  
+  .grid-item{
+    border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: black;
+  margin-top:10% ;
+  }
+  .grid-item p{
+    color: white;
+  }
+  .button {
+            position: absolute;
+            bottom: -750px;
+            left: 50%;
+            right: 50%;
+            margin-left: -104.5px; /*104.5px is half of the button's width*/
+            background-color: black;
+            color: white;
+            height:7%;
+            padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+        }
+        .button:hover{
+            background-color: #FBC400;
+        }
+        .cta-button {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color:black;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+        }
+
+        .cta-button:hover {
+          background-color:#FBC400 ;
+        }
+
+        h2{
+          color: aliceblue;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="grid-container" >
+            <div class="grid-item">
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <h2>N-map</h2>
+              <p>Nmap allows users to scan and discover hosts on a computer network, find open ports on those hosts, and determine the services running on those ports. It uses raw IP packets to accomplish its tasks and supports a wide range of scanning techniques, including TCP connect scanning, SYN scanning, UDP scanning, and more.</p>
+              <a href="N-map.html" class="cta-button">Go</a>
+            </div>
+            <div class="grid-item">
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <h2>Tshark</h2>
+              <p>Tshark is a command-line network protocol analyzer that captures and analyzes network traffic. It is part of the Wireshark suite and operates in a terminal environment. Tshark allows users to inspect captured packets, filter specific data, and export information in various formats. It is a powerful tool for network troubleshooting, security analysis, and protocol debugging. With its extensive capabilities, Tshark provides valuable insights into network communication and aids in diagnosing issues on networks</p>
+              <a href="wireshark.html" class="cta-button">Go</a>
+            </div>
+            <div class="grid-item">
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <h2>Strings</h2>
+              <p>The "strings" tool in Linux is a command-line utility used to extract printable character sequences from binary files. It searches for ASCII strings within the file, ignoring non-printable characters and binary data. This tool is helpful in analyzing and inspecting binary files, identifying human-readable content embedded within executables, libraries, and other data files. By default, it displays sequences of four or more printable characters, but options can be used to customize its behavior and output</p>
+              <a href="Strings.html" class="cta-button">Go</a>
+            </div>
+            <div class="grid-item">
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <h2>Binwalk</h2>
+              <p>Binwalk is a command-line tool for analyzing and extracting data from binary files like firmware and disk images. It scans files for embedded files and signatures to identify various file formats and structures. With its simple interface, it helps researchers, security professionals, and developers to extract and analyze embedded components within binary data easily. Binwalk is particularly useful for tasks like reverse engineering, firmware analysis, and data extraction from complex binary files.</p>
+              <a href="Binwalk.html" class="cta-button">Go</a>
+            </div>
+            <div class="grid-item">
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <h2>Exif Tool</h2>
+              <p>ExifTool, you can extract information such as camera settings, GPS coordinates, date and time of creation, copyright information, and other metadata embedded in multimedia files. It supports a wide range of file formats, including JPEG, TIFF, PNG, GIF, MP3, MP4, MOV, and many more.</p>
+              <a href="exiftool.html" class="cta-button">Go</a>
+            </div>
+            <div class="grid-item">
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <h2>CMD</h2>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              <a href="cmd.html" class="cta-button">Go</a>
+            </div>
+            <!-- <div class="grid-item">
+              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              <a href="N-map.html" class="cta-button">Go</a>
+            </div> -->
+            
+
+
+
+    </div>
+    <button
+    id="back" class="button">Back
+</button>
+
+
+<button id="processButton" onclick="processHTML()">Save</button>
+    <script>
+        function processHTML() {
+            fetch('http://127.0.0.1:8000/process-html/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the response message or handle errors
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Add a click event listener to the button
+        const processButton = document.getElementById('processButton');
+        processButton.addEventListener('click', processHTML);
+
+
+
+
+        // Get a reference to the button element
+        const navigateButton1 = document.getElementById("back");
+    
+        // Add a click event listener to the button
+        navigateButton1.addEventListener("click", function() {
+            // Navigate to index.html when the button is clicked
+            window.location.href = "index.html";
+        });
+        </script>
+    
+    
+</body>
+</html>

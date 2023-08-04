@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>nmap_api Frontend</title>
+    <style>
+      .grid-container {
+          display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+  gap: 20px;
+  }
+  
+  .grid-item{
+    border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: black;
+  margin-top:10% ;
+ }
+ .grid-item p{
+    color: white;
+  }
+  .grid-item h2{
+    color: white;
+  }
+  .grid-item label{
+    color: white;
+  }
+  .grid-item button{
+    background-color: white;
+
+  }
+  .grid-item button:hover{
+    background-color: #FBC400;
+  }
+  #back:hover{
+            background-color: #FBC400;
+        }
+        #back{
+          position: absolute;
+            bottom: -280%;
+            left: 50%;
+            right: 50%;
+            margin-left: -104.5px; /*104.5px is half of the button's width*/
+            background-color: black;
+            color: white;
+            height:7%;
+            padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exiftool</h1>
+    <div class="grid-container">
+      <div class="grid-item">
+    
+    <!--Extract information from a file-->
+    <h2>Extract information from a file</h2>
+    <label for="Extract-information-from-a-file">Enter Extract information from a file:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="Extract-information-from-a-file">
+    <button onclick="Extractinformationfromafile()">Scan</button>
+    <pre id="Extract-information-from-a-file"></pre>
+      </div>
+      <script>
+        function Extractinformationfromafile() {
+        const location = document.getElementById("Extract-information-from-a-file").value;
+        const data = { scan_type: "Extract information from a file", location:location };
+        sendScanRequest(data, "Extract-information-from-a-file");
+    }
+      </script>
+
+      <div class="grid-item">
+
+    <!-- Print all meta information-->
+    <h2>Print all meta information</h2>
+    <label for="Print-information">Enter IP Addresses (comma-separated):</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="Print-information">
+    <button onclick="Printinformation()">Scan</button>
+    <pre id="Print-informationt"></pre>
+      </div>
+      <script>
+        function Printinformation() {
+        const location = document.getElementById("Print-information").value;
+        const data = { scan_type: "Print all meta information", location:location };
+        sendScanRequest(data, "Print-information");
+    }
+      </script>
+
+      <div class="grid-item">
+
+    <!--Print common meta information-->
+    <h2>Print common meta information</h2>
+    <label for="Print-common">Enter Print common meta information:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="Print-common">
+    <button onclick="Printcommonmetainformation()">Scan</button>
+    <pre id="Print-common"></pre>
+      </div>
+      <script>
+        function Printcommonmetainformation() {
+        const location = document.getElementById("Print-information").value;
+        const data = { scan_type: "Print common meta information", location:location };
+        sendScanRequest(data, "Print-common");
+    }
+      </script>
+
+      <div class="grid-item">
+
+    <!--Find image size and exposure time-->
+    <h2>Find image size and exposure time</h2>
+    <label for="Find-time">Enter Find image size and exposure time:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="Find-time">
+    <button onclick="Findtime()">Scan</button>
+    <pre id="subnet-result"></pre>
+
+      </div>
+      <script>
+        function Findtime() {
+        const location = document.getElementById("Find-time").value;
+        const data = { scan_type: "Find image size and exposure time", location:location };
+        sendScanRequest(data, "Find-time");
+    }
+      </script>
+
+<div class="grid-item">
+
+  <!--Extract image resolution from EXIF IFD1-->
+  <h2>Extract image resolution from EXIF IFD1</h2>
+  <label for="Extract-image">Enter Extract image resolution from EXIF IFD1:</label>
+  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+  <input type="text" id="Extract-image">
+  <button onclick="Extractimage()">Scan</button>
+  <pre id="Extract-image"></pre>
+
+    </div>
+    <script>
+      function Extractimage() {
+      const location = document.getElementById("Extract-image").value;
+      const data = { scan_type: "Extract image resolution from EXIF IFD1", location:location };
+      sendScanRequest(data, "Extract-image");
+  }
+    </script>
+    <div class="grid-item">
+
+      <!--all author-related XMP information from an image-->
+      <h2>all author-related XMP information from an image</h2>
+      <label for="all-author">Enter all author-related XMP information from an image:</label>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+      <input type="text" id="all-author">
+      <button onclick="allauthor()">Scan</button>
+      <pre id="all-author"></pre>
+    
+        </div>
+        <script>
+          function allauthor() {
+          const location = document.getElementById("all-author").value;
+          const data = { scan_type: "all author-related XMP information from an image", location:location };
+          sendScanRequest(data, "all-author");
+      }
+        </script>
+        <div class="grid-item">
+
+          <!--Print one line of output containing the file name-->
+          <h2>Print one line of output containing the file name</h2>
+          <label for="Print-one">Enter Print one line of output containing the file name:</label>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+          <input type="text" id="Print-one">
+          <button onclick="Printone()">Scan</button>
+          <pre id="Print-one"></pre>
+        
+            </div>
+            <script>
+              function Printone() {
+              const location = document.getElementById("Print-one").value;
+              const data = { scan_type: "Print one line of output containing the file name", location:location };
+              sendScanRequest(data, "Print-one");
+          }
+            </script>
+            <div class="grid-item">
+
+              <!--GPS positions from an AVCHD video-->
+              <h2>GPS positions from an AVCHD video</h2>
+              <label for="GPS-positions">Enter GPS positions from an AVCHD video:</label>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+              <input type="text" id="GPS-positions">
+              <button onclick="GPS()">Scan</button>
+              <pre id="GPS-positions"></pre>
+            
+                </div>
+                <script>
+                  function GPS() {
+                  const location = document.getElementById("GPS-positions").value;
+                  const data = { scan_type: "GPS positions from an AVCHD video", location:location };
+                  sendScanRequest(data, "GPS-positions");
+              }
+                </script>
+      
+    
+        
+          <button
+          id="back" class="button">Back
+      </button>
+      <script>
+
+
+        function sendScanRequest(data) {
+                    console.log(data)
+                    fetch("http://127.0.0.1:8000/exiftool/", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(data),
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+                        // document.getElementById(resultEleme
+                        
+                        alert(result);
+                    })
+                    .catch(error => {
+                        console.error("Error occurred:", error);
+                    });
+                }
+
+
+
+
+        // Get a reference to the button element
+        const navigateButton1 = document.getElementById("back");
+      
+        // Add a click event listener to the button
+        navigateButton1.addEventListener("click", function() {
+            // Navigate to index.html when the button is clicked
+            window.location.href = "Tools.html";
+        });
+        </script>
+    </div>
+</body>
+</html>

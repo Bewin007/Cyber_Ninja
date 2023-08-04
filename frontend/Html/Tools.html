@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network</title>
+    <title>Tools</title>
     <style>
       .body{
         background-color: black;
@@ -15,6 +15,23 @@
   
   gap: 20px;
   }
+
+  #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Additional styles to ensure content is visible on top of the video */
+        .grid-container {
+            position: relative;
+            z-index: 1;
+            /* Add any necessary styling to make the grid content visible on top of the video */
+        }
   
   .grid-item{
     border: 1px solid #ccc;
@@ -28,27 +45,48 @@
   .grid-item p{
     color: white;
   }
-  .button {
-            position: absolute;
-            bottom: -750px;
-            left: 50%;
-            right: 50%;
-            margin-left: -104.5px; /*104.5px is half of the button's width*/
+  .button-container {
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Style for the "Save" button */
+        #processButton {
             background-color: black;
             color: white;
-            height:7%;
             padding: 15px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .button:hover{
+
+        #processButton:hover {
             background-color: #FBC400;
         }
+
+        /* Style for the "Back" button */
+        #back {
+            background-color: black;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #back:hover {
+            background-color: #FBC400;
+        }
+
         .cta-button {
           display: inline-block;
           padding: 10px 20px;
@@ -65,40 +103,103 @@
         h2{
           color: aliceblue;
         }
+        h1{
+          color: white;
+          display: flex;
+  justify-content: center;
+  align-items: center;
+        }
+        
+
+
+
+        .button-27 {
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+.button-27:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-27:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+
+
 
     </style>
 </head>
 <body>
+  <video autoplay loop muted playsinline id="video-background">
+    <!-- Multiple source files for cross-browser compatibility -->
+    <source src="../components/Jeeva UI Plain.mp4" type="video/mp4">
+    <!-- <source src="path_to_video/video.webm" type="video/webm"> -->
+    <!-- Add more source files if needed for other formats -->
+</video>
     <div class="grid-container" >
             <div class="grid-item">
-              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <input type="image" id="myimage" style="width:150px;height: 150px;" src="../components/nmap-logo-256x256-1.png" /> 
               <h2>N-map</h2>
               <p>Nmap allows users to scan and discover hosts on a computer network, find open ports on those hosts, and determine the services running on those ports. It uses raw IP packets to accomplish its tasks and supports a wide range of scanning techniques, including TCP connect scanning, SYN scanning, UDP scanning, and more.</p>
               <a href="N-map.html" class="cta-button">Go</a>
             </div>
             <div class="grid-item">
-              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
-              <h2>Tshark</h2>
-              <p>Tshark is a command-line network protocol analyzer that captures and analyzes network traffic. It is part of the Wireshark suite and operates in a terminal environment. Tshark allows users to inspect captured packets, filter specific data, and export information in various formats. It is a powerful tool for network troubleshooting, security analysis, and protocol debugging. With its extensive capabilities, Tshark provides valuable insights into network communication and aids in diagnosing issues on networks</p>
+              <input type="image" id="myimage" style="width:300px;height: 82px;" src="../components/wireshark-logo.png" /> 
+              <h2>Wireshark</h2>
+              <p>Wireshark is a command-line network protocol analyzer that captures and analyzes network traffic. It is part of the Wireshark suite and operates in a terminal environment. Wireshark allows users to inspect captured packets, filter specific data, and export information in various formats. It is a powerful tool for network troubleshooting, security analysis, and protocol debugging. With its extensive capabilities, Wireshark provides valuable insights into network communication and aids in diagnosing issues on networks</p>
               <a href="wireshark.html" class="cta-button">Go</a>
             </div>
             <div class="grid-item">
-              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <input type="image" id="myimage" style="width:150px;height: 100px;" src="../components/string (2).png" /> 
               <h2>Strings</h2>
               <p>The "strings" tool in Linux is a command-line utility used to extract printable character sequences from binary files. It searches for ASCII strings within the file, ignoring non-printable characters and binary data. This tool is helpful in analyzing and inspecting binary files, identifying human-readable content embedded within executables, libraries, and other data files. By default, it displays sequences of four or more printable characters, but options can be used to customize its behavior and output</p>
               <a href="Strings.html" class="cta-button">Go</a>
             </div>
             <div class="grid-item">
-              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <input type="image" id="myimage" style="width:150px;height: 63px;" src="../components/Binwalk.png" /> 
               <h2>Binwalk</h2>
               <p>Binwalk is a command-line tool for analyzing and extracting data from binary files like firmware and disk images. It scans files for embedded files and signatures to identify various file formats and structures. With its simple interface, it helps researchers, security professionals, and developers to extract and analyze embedded components within binary data easily. Binwalk is particularly useful for tasks like reverse engineering, firmware analysis, and data extraction from complex binary files.</p>
               <a href="Binwalk.html" class="cta-button">Go</a>
             </div>
             <div class="grid-item">
-              <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
+              <input type="image" id="myimage" style="width:200px;height: 100px;" src="../components/Exiftool.png" /> 
               <h2>Exif Tool</h2>
               <p>ExifTool, you can extract information such as camera settings, GPS coordinates, date and time of creation, copyright information, and other metadata embedded in multimedia files. It supports a wide range of file formats, including JPEG, TIFF, PNG, GIF, MP3, MP4, MOV, and many more.</p>
               <a href="exiftool.html" class="cta-button">Go</a>
+            </div>
+            <div class="grid-item">
+              <h1 style="margin-top:20%;">COMING SOON...</h1>
             </div>
             <!-- <div class="grid-item">
               <input type="image" id="myimage" style="width:150px;height: 75px;" src="../components/ESP.Xplico.png" /> 
@@ -116,12 +217,11 @@
 
 
     </div>
-    <button
-    id="back" class="button">Back
-</button>
-
-
-<button id="processButton" onclick="processHTML()">Save</button>
+    <div class="button-container" style="margin-top: 50px;">
+      <button id="back">Back</button>
+      <!-- <button id="vire-result">result</button> -->
+      <button id="processButton" onclick="processHTML()">Save</button>
+  </div>
     <script>
         function processHTML() {
             fetch('http://127.0.0.1:8000/process-html/', {
@@ -143,6 +243,18 @@
         // Add a click event listener to the button
         const processButton = document.getElementById('processButton');
         processButton.addEventListener('click', processHTML);
+
+
+
+
+        const navigateButton = document.getElementById("vire-result");
+    
+        // Add a click event listener to the button
+        navigateButton.addEventListener("click", function() {
+            // Navigate to index.html when the button is clicked
+            window.location.href = "test.html";
+        });
+
 
 
 
