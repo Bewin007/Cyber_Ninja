@@ -22,7 +22,7 @@
             width: 100%;
         }
 
-            </style>
+    </style>
 </head>
 <body>
     <div class="terminal-container">
@@ -55,10 +55,11 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    outputElement.textContent += `${data.output}\n`;
+                    outputElement.innerHTML += `<h2>${command}</h2>\n`;
+                    outputElement.innerHTML += `<p>${data.output}</p>\n`;
                 })
                 .catch(error => {
-                    outputElement.textContent += `Error: ${error}\n`;
+                    outputElement.innerHTML += `Error: ${error}\n`;
                 });
             }
         });

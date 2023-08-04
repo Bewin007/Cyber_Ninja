@@ -489,7 +489,6 @@ class nmap_api(APIView):
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
             return Response(output_to_send)
-            return Response("No UDP or TCP ports specified.", status=400)
         
         elif scan_type == "Scan Ports by UDP":
             ip = request.data.get('ip')
@@ -1340,7 +1339,6 @@ class ProcessHTMLView(APIView):
         else:
             return Response({"error": "File not found."}, status=404)
 
-
 @api_view(['POST'])
 def execute_command(request):
     command = request.data.get('command')
@@ -1349,3 +1347,19 @@ def execute_command(request):
         return Response({'output': result})
     except subprocess.CalledProcessError as e:
         return Response({'output': f"Error: {e.output}"})
+
+
+# @api_view(['POST'])
+# def execute_command(request):
+#     command = request.data.get('command')
+#     try:
+#         result = subprocess.check_output(command, shell=True, text=True)
+#         output = {'output': result}
+#     except subprocess.CalledProcessError as e:
+#         output = {'output': f"Error: {e.output}"}
+
+#     with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+#         file.write(f"<h2>{command}</h2>\n")
+#         file.write(f"<p>{output['output']}</p>\n")
+
+#     return Response({'output': result})
