@@ -1,0 +1,4 @@
+<h2>&lt;b&gt;basic scan on the specified file&lt;/b&gt;</h2>
+DECIMAL       HEXADECIMAL     DESCRIPTION--------------------------------------------------------------------------------16            0x10            HTML document header7790          0x1E6E          HTML document footer
+<h2>&lt;b&gt;specific file signatures&lt;/b&gt;</h2>
+DECIMAL       HEXADECIMAL     DESCRIPTION--------------------------------------------------------------------------------16            0x10            HTML document header7790          0x1E6E          HTML document footer

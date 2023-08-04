@@ -1,0 +1,24 @@
+<h2>&lt;b&gt;basic scan on the specified file&lt;/b&gt;</h2>
+DECIMAL       HEXADECIMAL     DESCRIPTION--------------------------------------------------------------------------------16            0x10            HTML document header7790          0x1E6E          HTML document footer
+<h2>&lt;b&gt;recursive scan&lt;/b&gt;</h2>
+DECIMAL       HEXADECIMAL     DESCRIPTION--------------------------------------------------------------------------------16            0x10            HTML document header7790          0x1E6E          HTML document footer
+<h2>&lt;b&gt;entropy analysis&lt;/b&gt;</h2>
+DECIMAL       HEXADECIMAL     ENTROPY--------------------------------------------------------------------------------0             0x0             Falling entropy edge (0.567816)
+<h2>&lt;b&gt;recursive signature scan&lt;/b&gt;</h2>
+
+<h2>&lt;b&gt;only display results&lt;/b&gt;</h2>
+
+<h2>&lt;b&gt;Extract and Display Disassembly&lt;/b&gt;</h2>
+DECIMAL       HEXADECIMAL     DESCRIPTION--------------------------------------------------------------------------------
+<h2>&lt;b&gt;Extract and Display Metadata&lt;/b&gt;</h2>
+Scan Time:     2023-08-04 04:04:50Target File:   /home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/Strings.htmlMD5 Checksum:  4cc3e665b8ac82379a5cf7204ef6c925Signatures:    411DECIMAL       HEXADECIMAL     DESCRIPTION--------------------------------------------------------------------------------16            0x10            HTML document header7790          0x1E6E          HTML document footer
+<h2>&lt;b&gt;specific file signatures&lt;/b&gt;</h2>
+DECIMAL       HEXADECIMAL     DESCRIPTION--------------------------------------------------------------------------------16            0x10            HTML document header7790          0x1E6E          HTML document footer
+<h2>&lt;b&gt;specific file signatures&lt;/b&gt;</h2>
+DECIMAL       HEXADECIMAL     DESCRIPTION--------------------------------------------------------------------------------16            0x10            HTML document header7790          0x1E6E          HTML document footer
+<h2>&lt;b&gt;specific file signatures&lt;/b&gt;</h2>
+DECIMAL       HEXADECIMAL     DESCRIPTION--------------------------------------------------------------------------------16            0x10            HTML document header7790          0x1E6E          HTML document footer
+<h2>&lt;b&gt;entropy analysis&lt;/b&gt;</h2>
+DECIMAL       HEXADECIMAL     ENTROPY--------------------------------------------------------------------------------0             0x0             Falling entropy edge (0.567816)
+<h2>&lt;b&gt;recursive scan&lt;/b&gt;</h2>
+DECIMAL       HEXADECIMAL     DESCRIPTION--------------------------------------------------------------------------------16            0x10            HTML document header7790          0x1E6E          HTML document footer

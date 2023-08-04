@@ -1200,7 +1200,7 @@ class Binwalk_api(APIView):
             output_to_send = output.replace('\n', '')
             return Response(output_to_send)   
          
-        elif scan_type == "specific file signatures ":
+        elif scan_type == "specific file signatures":
             location = request.data.get('location')
             command = ['sudo', "binwalk", "-S", location]
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
@@ -1294,7 +1294,9 @@ class Binwalk_api(APIView):
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
-            return Response(output_to_send)  
+            return Response(output_to_send)
+
+        return Response("Not valid")  
 
 
 
