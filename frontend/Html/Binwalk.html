@@ -56,19 +56,26 @@
     </style>
 </head>
 <body>
-    <h1>N-Map</h1>
+    <h1>Binwalk</h1>
     <div class="grid-container">
       <div class="grid-item">
     
     <!-- Single target scan -->
-    <h2>Single target scan</h2>
-    <label for="single-ip">Enter IP Address:</label>
+    <h2>basic scan on the specified file"</h2>
+    <label for="location">Enter the location of saved file:</label>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-    <input type="text" id="single-ip">
-    <button onclick="scanSingleTarget()">Scan</button>
+    <input type="text" id="location-basic">
+    <button onclick="basic_scan()">Scan</button>
     <pre id="single-result"></pre>
       </div>
-
+    <script>
+      function basic_scan() {
+      const location = document.getElementById("location-basic").value;
+      const data = { scan_type: "basic scan on the specified file", location:location };
+      sendScanRequest(data);
+  }
+    </script>
+    
       <div class="grid-item">
 
     <!-- Multiple targets scan -->
@@ -182,6 +189,30 @@
           id="back" class="button">Back
       </button>
       <script>
+
+function sendScanRequest(data) {
+                    console.log(data)
+                    fetch("http://127.0.0.1:8000/binwalk/", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(data),
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+                        // document.getElementById(resultEleme
+                        
+                        alert(result);
+                    })
+                    .catch(error => {
+                        console.error("Error occurred:", error);
+                    });
+                }
+
+
+
+
         // Get a reference to the button element
         const navigateButton1 = document.getElementById("back");
       
