@@ -9,37 +9,64 @@
             position: absolute;
             background-color: black;
             color: white;
-            height:3%;
+            height:5%;
             padding: 15px 30px;
     font-size: 18px;
     font-weight: bold;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;  
+    
         }
         .button:hover{
             background-color: #FBC400;
         }
-        a{
-            color:white;
-            text-decoration: none;
+        /* #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
+        .grid-container {
+            position: relative;
+            z-index: 1;
+        } */
+        html{
+            background-image: url('../components/result.png');
+            background-size: cover;
+            background-position:center center;
+            background-repeat: no-repeat;
+            height: 100%;
+            width:100%;
+        }
+            
+        
+
 
     </style>
 </head>
 <body>
-    <!-- The div where the imported content from test.html will be placed -->
-    <div id="myDiv">
-        <!-- The content from test.html will be inserted here -->
-    </div>
+    <div class="container">
 
-    <div class="button">
-        <a href="Tools.html">Back</a>
+   
+
+    <button id="back" class="button">Back</button>
     </div>
 
     <!-- JavaScript to fetch content from test.html and insert it before the div -->
     <script>
+        // Get a reference to the button element
+        const navigateButton = document.getElementById("back");
+      
+        // Add a click event listener to the button
+        navigateButton.addEventListener("click", function() {
+            // Navigate to index.html when the button is clicked
+            window.location.href = "Tools.html";
+        });
+        
         // Function to fetch and insert content from test.html
         function importTestContent() {
             fetch('test.html')

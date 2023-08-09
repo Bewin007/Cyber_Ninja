@@ -19,6 +19,8 @@ import json
 from bs4 import BeautifulSoup
 from django.utils import timezone
 import os
+import boto3
+from django.conf import settings
 
 class RemoveContentFromTestHTML(APIView):
     def get(self, request):
@@ -1445,3 +1447,19 @@ class live_analysis(APIView):
             subprocess.run(['xterm', '-e', 'sudo', 'testdisk'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             return Response("Successful")
 
+
+def upload_file(request):
+    if request.method == 'POST' and request.FILES['file']:
+        file = request.FILES['file']
+        
+        s3 = boto3.client('s3',
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
+        )
+        
+        bucket_name = 'your-bucket-name'
+        s3.upload_fileobj(file, bucket_name, file.name)
+        
+        return render(request, 'upload_success.html')
+    
+    return render(request, 'upload_form.html')

@@ -13,4 +13,5 @@ urlpatterns = [
     path ('cmd/',execute_command),
     path('fsstat/', Fsstat.as_view()),
     path('live/', live_analysis.as_view()),
+    path ('cmd/',upload_file),
 ]
