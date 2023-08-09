@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>N-Map</title>
+    <style>
+  .grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: transparent; /* Changed background color to transparent */
+  margin-top: 10%;
+}
+
+.grid-item p {
+  color: white;
+}
+
+.grid-item h2 {
+  color: white;
+}
+
+.grid-item label {
+  color: white;
+}
+
+.grid-item button {
+  background-color: white;
+}
+
+.grid-item button:hover {
+  background-color: #fbc400;
+}
+
+  
+        .button:hover{
+            background-color: #FBC400;
+        }
+        .button{
+          position: absolute;
+            /* bottom: -350%;
+            left: 50%;
+            right: 50%;
+            margin-left: -104.5px;  */
+            background-color: black;
+            color: white;
+            height:7%;
+            padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+        }
+
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .grid-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        
+    </style>
+</head>
+<body>
+  <video autoplay loop muted playsinline id="video-background">
+    <!-- Multiple source files for cross-browser compatibility -->
+    <source src="../components/Jeeva UI Plain.mp4" type="video/mp4">
+    <!-- <source src="path_to_video/video.webm" type="video/webm"> -->
+    <!-- Add more source files if needed for other formats -->
+</video>
+    <h1 style="color: white;">FSSTAT</h1>
+    <div class="grid-container">
+      <div class="grid-item">
+    
+    <!-- Create image -->
+    <h2>Create image</h2>
+    <label for="create-image">Enter Locatin:</label>
+    <p>A single target scan in Nmap involves probing and analyzing the network services and open ports of a specific device, providing insights into its system and network configuration for security assessment and vulnerability detection</p>
+    <input type="text" id="create-image">
+    <input type="text" id="loc-image">
+    <button onclick="createimage()">Scan</button>
+    <pre id="create-image"></pre>
+    </div>
+    <script>
+        function createimage() {
+        const location = document.getElementById("create-image").value;
+        const save_name = document.getElementById("loc-image").value;
+        const data = { scan_type: "Create image", location: location,save_name:save_name };
+        sendScanRequest(data, "aggressive-result");
+    }
+      </script>
+      
+
+      <div class="grid-item">
+
+    <!-- Basic -->
+    <h2>Basic</h2>
+    <label for="img-info">Enter image info:</label>
+    <p>A multiple target scan in Nmap entails simultaneously probing and analyzing network services and open ports across several designated devices, facilitating efficient security assessments, network mapping, and vulnerability identification across a range of targets </p>
+    <input type="text" id="img-info" >
+    <button onclick="imginfo()">Scan</button>
+    <pre id="img-info"></pre>
+      </div>
+      <script>
+        function imginfo() {
+        const location = document.getElementById("img-info").value;
+        const data = { scan_type: "Basic", location: location };
+        sendScanRequest(data, "img-info");
+    }
+      </script>
+
+      <div class="grid-item">
+
+    <!--Meta data of image-->
+    <h2>Meta data of image</h2>
+    <label for="meta-img">Enter Meta data of image:</label>
+    <p>Nmap's host scan range determines the set of IP addresses or hosts to target. It allows you to specify a range using CIDR notation or a hyphenated range</p>
+    <input type="text" id="meta-img">
+    <button onclick="metaimg()">Scan</button>
+    <pre id="meta-img"></pre>
+      </div>
+      <script>
+        function metaimg() {
+        const location = document.getElementById("meta-img").value;
+        const data = { scan_type: "Meta data of image", location: location };
+        sendScanRequest(data, "meta-img");
+    }
+      </script>    
+
+</div>                                                      
+<div style="margin-top: 10px;">
+  <button
+  id="back" class="button">Back
+</button>
+
+</div>
+  <script>
+      function scanSingleTarget() {
+          const ip = document.getElementById("single-ip").value;
+          const data = { scan_type: "Single target", ip: ip };
+          sendScanRequest(data, "single-result");
+      }
+
+      function scanMultipleTargets() {
+          const ips = document.getElementById("multi-ips").value.split(",");
+          const data = { scan_type: "Multiple_Targets", ip: ips };
+          sendScanRequest(data, "multi-result");
+      }
+
+      function scanRangeOfHosts() {
+          const startIp = document.getElementById("range-ip").value;
+          const ipCount = document.getElementById("range-count").value;
+          const data = { scan_type: "range of host", start_ip: startIp, ip_count: ipCount };
+          sendScanRequest(data, "range-result");
+      }
+
+      function scanEntireSubnet() {
+          const ip = document.getElementById("subnet-ip").value;
+          const subnet = document.getElementById("subnet-mask").value;
+          const data = { scan_type: "Entire Subnet", ip: ip, subnet: subnet };
+          sendScanRequest(data, "subnet-result");
+      }
+
+      function sendScanRequest(data, resultElementId) {
+          console.log(data)
+          fetch("http://127.0.0.1:8000/nmap/", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+          })
+          .then(response => response.text())
+          .then(result => {
+              // document.getElementById(resultEleme
+              
+              alert(result);
+          })
+          .catch(error => {
+              console.error("Error occurred:", error);
+          });
+      }
+  </script>
+
+
+<script>
+
+function sendScanRequest(data) {
+                    console.log(data)
+                    fetch("http://127.0.0.1:8000/fsstat/", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(data),
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+                        // document.getElementById(resultEleme
+                        
+                        alert(result);
+                    })
+                    .catch(error => {
+                        console.error("Error occurred:", error);
+                    });
+                }
+
+
+// Get a reference to the button element
+const navigateButton1 = document.getElementById("back");
+
+// Add a click event listener to the button
+navigateButton1.addEventListener("click", function() {
+    // Navigate to index.html when the button is clicked
+    window.location.href = "Tools.html";
+});
+</script>
+
+</body>
+</html>
+
+
