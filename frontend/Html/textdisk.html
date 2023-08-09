@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>nmap_api Frontend</title>
+    <style>
+      
+  .grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: transparent; /* Changed background color to transparent */
+  margin-top: 10%;
+}
+
+.grid-item p {
+  color: white;
+}
+
+.grid-item h2 {
+  color: white;
+}
+
+.grid-item label {
+  color: white;
+}
+
+.grid-item button {
+  background-color: white;
+}
+
+.grid-item button:hover {
+  background-color: #fbc400;
+}
+
+  .button:hover{
+            background-color: #FBC400;
+        }
+        .button{
+          position: absolute;
+            background-color: black;
+            color: white;
+            height:7%;
+            padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+        }
+
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Additional styles to ensure content is visible on top of the video */
+        .grid-container {
+            position: relative;
+            z-index: 1;
+            /* Add any necessary styling to make the grid content visible on top of the video */
+        }
+    </style>
+</head>
+<body>
+
+  <video autoplay loop muted playsinline id="video-background">
+    <!-- Multiple source files for cross-browser compatibility -->
+    <source src="../components/Jeeva UI Plain.mp4" type="video/mp4">
+    <!-- <source src="path_to_video/video.webm" type="video/webm"> -->
+    <!-- Add more source files if needed for other formats -->
+</video>
+    <h1>Testdisk</h1>
+    <div class="grid-container">
+      <div class="grid-item">
+    
+    <!--nmon-->
+    <h2>nmon</h2>
+    <p>command-line tool that displays network interface configuration information, including IP addresses and network details, providing insights into network settings on Unix-like operating systems. </p>
+    <!-- <input type="text" id="ifconfig"> -->
+    <button onclick="nmon()">Scan</button>
+    <pre id="n-mon"></pre>
+      </div>
+      <script>
+        function nmon() {
+        // const command = document.getElementById("ifconfig").value;
+        const data = { scan_type: "nmon" };
+        sendScanRequest(data, "n-mon");
+    }
+      </script>
+      <div class="grid-item">
+    
+        <!--testdisk-->
+        <h2>testdisk</h2>
+        <p>command-line tool that displays network interface configuration information, including IP addresses and network details, providing insights into network settings on Unix-like operating systems. </p>
+        <button onclick="testdisk()">Scan</button>
+        <pre id="test-disk"></pre>
+          </div>
+          <script>
+            function testdisk() {
+            // const command = document.getElementById("ifconfig").value;
+            const data = { scan_type: "testdisk" };
+            sendScanRequest(data, "test-disk");
+        }
+          </script>
+      </div>
+
+      <div style="margin-top: 10px;">
+        <button id="back" class="button">Back</button>
+    
+    </div>
+  
+          <script>
+          function sendScanRequest(data) {
+                              console.log(data)
+                                fetch(" http://127.0.0.1:8000/live/", {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify(data),
+                                })
+                                .then(response => response.text())
+                                .then(result => {
+                                    // document.getElementById(resultElementId).textContent = result;
+                                    console.log(result)
+                                    // alert(result);
+                                })
+                                .catch(error => {
+                                    console.error("Error occurred:", error);
+                                });
+                            }
+          // Get a reference to the button element
+          const navigateButton1 = document.getElementById("back");
+        
+          // Add a click event listener to the button
+          navigateButton1.addEventListener("click", function() {
+              // Navigate to index.html when the button is clicked
+              window.location.href = "Tools.html";
+          });
+          </script>
+  </body>
+  </html>
