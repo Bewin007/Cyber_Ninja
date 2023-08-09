@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>nmap_api Frontend</title>
+    <title>N-Map</title>
     <style>
-      .grid-container {
+      /* .grid-container {
           display: grid;
   grid-template-columns: repeat(2, 1fr);
   
@@ -32,7 +32,43 @@
   }
   .grid-item button:hover{
     background-color: #FBC400;
-  }
+  } */
+
+
+  .grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: transparent; /* Changed background color to transparent */
+  margin-top: 10%;
+}
+
+.grid-item p {
+  color: white;
+}
+
+.grid-item h2 {
+  color: white;
+}
+
+.grid-item label {
+  color: white;
+}
+
+.grid-item button {
+  background-color: white;
+}
+
+.grid-item button:hover {
+  background-color: #fbc400;
+}
+
   
         .button:hover{
             background-color: #FBC400;
@@ -64,12 +100,9 @@
             object-fit: cover;
             z-index: -1;
         }
-
-        /* Additional styles to ensure content is visible on top of the video */
         .grid-container {
             position: relative;
             z-index: 1;
-            /* Add any necessary styling to make the grid content visible on top of the video */
         }
 
         
@@ -82,15 +115,15 @@
     <!-- <source src="path_to_video/video.webm" type="video/webm"> -->
     <!-- Add more source files if needed for other formats -->
 </video>
-    <h1>N-Map</h1>
+    <h1 style="color: white;">N-Map</h1>
     <div class="grid-container">
       <div class="grid-item">
     
     <!-- Single target scan -->
     <h2>Single target scan</h2>
     <label for="single-ip">Enter IP Address:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-    <input type="text" id="single-ip">
+    <p>A single target scan in Nmap involves probing and analyzing the network services and open ports of a specific device, providing insights into its system and network configuration for security assessment and vulnerability detection</p>
+    <input type="text" id="single-ip" placeholder="192.168.0.1">
     <button onclick="scanSingleTarget()">Scan</button>
     <pre id="single-result"></pre>
       </div>
@@ -100,8 +133,8 @@
     <!-- Multiple targets scan -->
     <h2>Multiple targets scan</h2>
     <label for="multi-ips">Enter IP Addresses (comma-separated):</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-    <input type="text" id="multi-ips">
+    <p>A multiple target scan in Nmap entails simultaneously probing and analyzing network services and open ports across several designated devices, facilitating efficient security assessments, network mapping, and vulnerability identification across a range of targets </p>
+    <input type="text" id="multi-ips" placeholder="192.168.0.1,192.168.0.2">
     <button onclick="scanMultipleTargets()">Scan</button>
     <pre id="multi-result"></pre>
       </div>
@@ -111,10 +144,10 @@
     <!-- Range of hosts scan -->
     <h2>Range of hosts scan</h2>
     <label for="range-ip">Enter Start IP Address:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-    <input type="text" id="range-ip">
+    <p>Nmap's host scan range determines the set of IP addresses or hosts to target. It allows you to specify a range using CIDR notation or a hyphenated range</p>
+    <input type="text" id="range-ip" placeholder="192.168.0.1">
     <label for="range-count">Enter IP Count:</label>
-    <input type="number" id="range-count" min="1" value="1">
+    <input type="number" id="range-count" min="1" value="1" placeholder="20" >
     <button onclick="scanRangeOfHosts()">Scan</button>
     <pre id="range-result"></pre>
       </div>
@@ -124,10 +157,10 @@
     <!-- Entire Subnet scan -->
     <h2>Entire Subnet scan</h2>
     <label for="subnet-ip">Enter IP Address:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-    <input type="text" id="subnet-ip">
+    <p>Nmap's subnet scan involves probing an entire subnet by specifying the network base address and subnet mask. This method efficiently explores all hosts within the subnet, aiding in comprehensive network discovery and security assessment</p>
+    <input type="text" id="subnet-ip" placeholder="192.168.0.1">
     <label for="subnet-mask">Enter Subnet Mask:</label>
-    <input type="number" id="subnet-mask" min="1" max="32" value="24">
+    <input type="number" id="subnet-mask" min="1" max="32" value="24" placeholder="24">
     <button onclick="scanEntireSubnet()">Scan</button>
     <pre id="subnet-result"></pre>
 
@@ -137,8 +170,8 @@
         <!-- Aggressive Scan -->
         <h2>Aggressive Scan</h2>
         <label for="aggressive-scan">Enter Aggressive scan:</label>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-        <input type="text" id="aggressive-scan">
+        <p>Nmap's aggressive scan employs intense techniques like parallel probes, script execution, and version detection to swiftly gather detailed information about target hosts. This approach enhances scan speed and thoroughness, but can potentially trigger network intrusion detection systems</p>
+        <input type="text" id="aggressive-scan" placeholder="192.168.10.1">
         <button onclick="scanAggressive()">Scan</button>
         <pre id="aggressive-result"></pre>
           </div>
@@ -155,8 +188,8 @@
         <!-- IPv6 -->
         <h2>IPv6</h2>
         <label for="IPv6">Enter IPv6 Addresses:</label>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-        <input type="text" id="multi-ipv6">
+        <p>Nmap's IPv6 scan extends its capabilities to probe and assess hosts using IPv6 addresses, enabling comprehensive network exploration in modern IPv6-enabled environments. This feature ensures compatibility and accuracy in identifying potential vulnerabilities across both IPv4 and IPv6 address spaces</p>
+        <input type="text" id="multi-ipv6" placeholder="1aff:3c21:47b1:0000:0000:0000:0000:2afe">
         <button onclick="scanIpv6()">Scan</button>
         <pre id="IPv6"></pre>
           </div>
@@ -173,8 +206,8 @@
         <!--Ping Only Scan-->
         <h2>Ping Only scan</h2>
         <label for="Ping-Only-Scan">Ping Only Scan:</label>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-        <input type="text" id="ping-only-scan">
+        <p>Nmap's ping-only scan focuses solely on determining the online status of target hosts by sending ICMP echo requests, omitting deeper probing. This quick method helps identify active hosts while minimizing network traffic and reducing the likelihood of detection</p>
+        <input type="text" id="ping-only-scan" placeholder="192.168.0.1">
         <button onclick="pingOnlyscan()">Scan</button>
         <pre id="ping-only-scan"></pre>
           </div>
@@ -191,8 +224,8 @@
         <!-- NO Ping -->
         <h2>NO Ping</h2>
         <label for="no-ping">Enter NO Ping:</label>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-        <input type="text" id="no-ping">
+        <p>The no ping scan in Nmap disregards ICMP echo requests to determine host availability, opting for direct probing methods like TCP or UDP. This approach allows for stealthy host discovery while evading traditional ping-based detection mechanisms</p>
+        <input type="text" id="no-ping" placeholder="192.168.0.1">
         <button onclick="Noping()">Scan</button>
         <pre id="no-ping-result"></pre>
         
@@ -209,8 +242,8 @@
             <!-- TCP SYN Ping -->
             <h2>TCP SYN Ping</h2>
             <label for="TCP-SYN-Ping">Enter TCP SYN Ping:</label>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-            <input type="text" id="TCP-SYN-Ping">
+            <p>Nmap's TCP SYN ping utilizes SYN packets to check host availability, avoiding full connection establishment. It efficiently confirms live hosts and is less intrusive than complete TCP connections</p>
+            <input type="text" id="TCP-SYN-Ping" placeholder="192.168.0.1">
             <button onclick="TCPSYNPing()">Scan</button>
             <pre id="TCP-SYN-Ping-result"></pre>
               </div>
@@ -227,8 +260,8 @@
             <!-- TCP ACK Ping -->
             <h2>TCP ACK Ping</h2>
             <label for="TCP-ACK-Ping">Enter TCP ACK Ping:</label>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-            <input type="text" id="TCP-ACK-Ping">
+            <p>Nmap's TCP ACK ping confirms host presence by sending ACK packets to various ports, assessing responses to identify live systems. It's useful for evading firewall rules and determining network reachability</p>
+            <input type="text" id="TCP-ACK-Ping" placeholder="192.168.0.1">
             <button onclick="TCPACKPing()">Scan</button>
             <pre id="TCP-ACK-Ping-result"></pre>
               </div>
@@ -243,10 +276,10 @@
               <div class="grid-item">
         
             <!-- UDP Ping -->
-            <h2>UDP Pingn</h2>
+            <h2>UDP Ping</h2>
             <label for="UDP-Ping">Enter UDP Ping:</label>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-            <input type="text" id="UDP-Ping">
+            <p>Nmap's UDP ping probes hosts using UDP packets to specific ports, helping identify live systems by assessing responses. This method is particularly effective for hosts that may not respond to ICMP or TCP probes</p>
+            <input type="text" id="UDP-Ping" placeholder="192.168.0.1">
             <button onclick="UDPPing()">Scan</button>
             <pre id="UDP-Ping"></pre>
               </div>
@@ -263,8 +296,8 @@
             <!-- SCTP INIT Ping -->
             <h2>SCTP INIT Ping</h2>
             <label for="SCTP-INIT-Ping">Enter SCTP INIT Ping:</label>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-            <input type="text" id="SCTP-INIT-Ping">
+            <p>Nmap's SCTP INIT ping employs INIT packets to assess live hosts supporting the SCTP protocol. This method aids in identifying SCTP-enabled systems within a network</p>
+            <input type="text" id="SCTP-INIT-Ping" placeholder="192.168.0.1">
             <button onclick="SCTPINITPing()">Scan</button>
             <pre id="SCTP-INIT-Ping"></pre>
             
@@ -281,8 +314,8 @@
                 <!--ICMP Echo Ping -->
                 <h2>ICMP Echo Ping</h2>
                 <label for="ICMP-Echo-Ping">Enter ICMP Echo Ping:</label>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-                <input type="text" id="ICMP-Echo-Ping">
+                <p>Nmap's ICMP Echo ping verifies host existence by sending ICMP Echo Request packets and analyzing responses. This basic method aids in quick host discovery but can be easily filtered by firewalls</p>
+                <input type="text" id="ICMP-Echo-Ping" placeholder="192.168.0.1">
                 <button onclick="ICMPEchoPing()">Scan</button>
                 <pre id="ICMP-Echo-Ping"></pre>
                   </div>
@@ -299,8 +332,10 @@
                 <!-- ITimestamp PingCMP -->
                 <h2>ITimestamp PingCMP</h2>
                 <label for="ITimestamp-PingCMP">Enter IP Addresses (comma-separated):</label>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-                <input type="text" id="ITimestamp-PingCMP">
+                <p>
+                  ITimestamp PingCMP is an Nmap host discovery technique that uses ICMP timestamp requests to determine the round-trip time (RTT) to a target host 
+                </p>
+                <input type="text" id="ITimestamp-PingCMP" placeholder="192.168.0.1">
                 <button onclick="ITimestampPingCMP()">Scan</button>
                 <pre id="ITimestamp-PingCMP"></pre>
                   </div>
@@ -317,8 +352,8 @@
                 <!-- CMP Address Mask Ping -->
                 <h2>CMP Address Mask Ping</h2>
                 <label for="CMP-Address-Mask-Ping">Enter Start IP Address:</label>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-                <input type="text" id="CMP-Address-Mask-Ping">
+                <p>CMP Address Mask Ping is an Nmap host discovery technique that uses ICMP Address Mask Reply packets to determine the network mask of a target host</p>
+                <input type="text" id="CMP-Address-Mask-Ping" placeholder="192.168.0.1">
                 <button onclick="CMPAddressMaskPing()">Scan</button>
                 <pre id="range-result"></pre>
                   </div>
@@ -335,8 +370,8 @@
                 <!-- IP Protocol Ping -->
                 <h2>IP Protocol Ping</h2>
                 <label for="IP-Protocol-Ping">Enter IP Address:</label>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-                <input type="text" id="IP-Protocol-Ping">
+                <p>IP Protocol Ping is an Nmap host discovery technique that sends ICMP Echo Request packets to all 256 possible IP protocols</p>
+                <input type="text" id="IP-Protocol-Ping" placeholder="192.168.0.1">
                 <button onclick="IPProtocolPing()">Scan</button>
                 <pre id="IP-Protocol-Ping"></pre>
                 
@@ -354,8 +389,8 @@
                     <!-- Traceroute -->
                     <h2>Traceroute</h2>
                     <label for="Traceroute">Enter IP Address:</label>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-                    <input type="text" id="Traceroute">
+                    <p>Traceroute is an Nmap utility that traces the route from the scanner to a target host by sending ICMP Echo Request packets with increasing TTL values</p>
+                    <input type="text" id="Traceroute" placeholder="192.168.0.1">
                     <button onclick="Traceroute()">Scan</button>
                     <pre id="Traceroute"></pre>
                       </div>
@@ -372,8 +407,8 @@
                     <!--Force Reverse DNS Resolution -->
                     <h2>Force Reverse DNS Resolution</h2>
                     <label for="Force-Reverse-DNS-Resolution">Enter IP Addresses (comma-separated):</label>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-                    <input type="text" id="Force-Reverse-DNS-Resolution">
+                    <p>Force Reverse DNS Resolution is an Nmap option that forces Nmap to resolve IP addresses to hostnames, regardless of whether or not the target host has a PTR record in DNS</p>
+                    <input type="text" id="Force-Reverse-DNS-Resolution" placeholder="192.168.0.1">
                     <button onclick="ForceReverseDNSResolution()">Scan</button>
                     <pre id="Force-Reverse-DNS-Resolution"></pre>
                       </div>
@@ -390,8 +425,8 @@
                     <!--Disable Reverse DNS Resolution-->
                     <h2>Disable Reverse DNS Resolution</h2>
                     <label for="Disable-Reverse-DNS-Resolution">Enter Start IP Address:</label>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-                    <input type="text" id="Disable-Reverse-DNS-Resolution">
+                    <p>Disable Reverse DNS Resolution is an Nmap option that prevents Nmap from resolving IP addresses to hostnames</p>
+                    <input type="text" id="Disable-Reverse-DNS-Resolution" placeholder="192.168.0.1">
                     <button onclick="DisableReverseDNSResolution()">Scan</button>
                     <pre id="Disable-Reverse-DNS-Resolution"></pre>
                       </div>
@@ -404,10 +439,10 @@
                       </script>
                 
                 
-                      <div class="grid-item">
+                      <!-- <div class="grid-item"> -->
                 
                     <!-- Alternative DNS Lookup -->
-                    <h2>Alternative DNS Lookup</h2>
+                    <!-- <h2>Alternative DNS Lookup</h2>
                     <label for="Alternative-DNS-Lookup">Enter IP Address:</label>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
                     <input type="text" id="Alternative DNS Lookup">
@@ -424,7 +459,6 @@
                       </script>
                       <div class="grid-item">
                 
-                        <!-- Manually Specify DNS Server -->
                         <h2>Manually Specify DNS Server</h2>
                         <label for="Manually-Specify-DNS-Server">Enter IP Address:</label>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
@@ -439,14 +473,15 @@
                             const data = { scan_type: "Manually Specify DNS Server", ip: ip };
                             sendScanRequest(data, "Manually-Specify-DNS-Server");
                         }
-                          </script>
+                          </script> -->
                           <div class="grid-item">
                 
                             <!-- Create a Host List -->
                             <h2>Create a Host List</h2>
                             <label for="Create-a-Host-List">Enter IP Address:</label>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-                            <input type="text" id="Create-a-Host-List">
+                            <p>To create a host list in Nmap, pass a file containing a list of IP addresses or hostnames to Nmap using the -iL option.
+                              The file can contain one IP address or hostname per line.</p>
+                            <input type="text" id="Create-a-Host-List" placeholder="192.168.0.1">
                             <button onclick="CreateaHostList()">Scan</button>
                             <pre id="Create-a-Host-List"></pre>
                             
@@ -463,8 +498,8 @@
                                 <!-- TCP SYN Scan -->
                                 <h2>TCP SYN Scan</h2>
                                 <label for="TCP-SYN-Scan">Enter IP Address:</label>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-                                <input type="text" id="TCP-SYN-Scan">
+                                <p>TCP SYN Scan is a type of port scan that sends a SYN packet to a target port and then waits for a response</p>
+                                <input type="text" id="TCP-SYN-Scan" placeholder="192.168.0.1">
                                 <button onclick="TCPSYNScan()">Scan</button>
                                 <pre id="TCP-SYN-Scan"></pre>
                                 
@@ -476,24 +511,7 @@
                                     sendScanRequest(data, "TCP-SYN-Scan");
                                 }
                                   </script>
-                                   <div class="grid-item">
-                
-                                    <!-- TCP SYN Scan -->
-                                    <h2>TCP SYN Scan</h2>
-                                    <label for="TCP-SYN-Scan">Enter IP Address:</label>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-                                    <input type="text" id="TCP-SYN-Scan">
-                                    <button onclick="TCPSYNScan()">Scan</button>
-                                    <pre id="TCP-SYN-Scan"></pre>
-                                    
-                                      </div>
-                                       <script>
-                                        function TCPSYNScan() {
-                                        const ip = document.getElementById("TCP-SYN-Scan").value;
-                                        const data = { scan_type: "TCP SYN Scan", ip: ip };
-                                        sendScanRequest(data, "TCP-SYN-Scan");
-                                    }
-                                      </script>
+                                   
                                        
     </div>      
 

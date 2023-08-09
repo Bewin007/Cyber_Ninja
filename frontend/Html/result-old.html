@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- The div where the imported content from test.html will be placed -->
+    <div id="myDiv">
+        <!-- The content from test.html will be inserted here -->
+    </div>
+
+    <div>
+        <a href="Tools.html">Back</a>
+    </div>
+
+    <!-- JavaScript to fetch content from test.html and insert it before the div -->
+    <script>
+        // Function to fetch and insert content from test.html
+        function importTestContent() {
+            fetch('test.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Create a temporary element to hold the imported content
+                    const tempElement = document.createElement('div');
+                    tempElement.innerHTML = data;
+
+                    // Get the target div and the imported content
+                    const targetDiv = document.getElementById('myDiv');
+                    const importedContent = tempElement.innerHTML;
+
+                    // Insert the imported content before the target div
+                    targetDiv.insertAdjacentHTML('beforebegin', importedContent);
+                })
+                .catch(error => console.error('Error fetching the content:', error));
+        }
+
+        // Call the function to import content from test.html
+        importTestContent();
+    </script>
+</body>
+</html>

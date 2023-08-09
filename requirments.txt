@@ -10,3 +10,4 @@ cryptography
 drf-jwt
 pyjwt
 beautifulsoup4
+pydrive

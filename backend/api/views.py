@@ -903,7 +903,7 @@ class volatality_api(APIView):
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
             return Response(output_to_send)
-        
+    
 
 
 class wireshark_api(APIView):
@@ -1363,3 +1363,81 @@ def execute_command(request):
 #         file.write(f"<p>{output['output']}</p>\n")
 
 #     return Response({'output': result})
+
+
+class Fsstat(APIView):
+    def post(self, request):
+        scan_type = request.data.get('scan_type')
+
+        if scan_type == "Create image":
+            location = request.data.get('location')
+            save_name = request.data.get('save_name')
+            command = ['sudo', "dd","if="+location,"of="+save_name, "bs=4M","status=progress"]
+            print(command)
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            output = result.stdout
+            formatted_output = output.replace('\n', '<br>')
+            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+                file.write(f"<h2>{scan_type}</h2>\n")
+                file.write(f"<p>{formatted_output}</p>\n")
+            output_to_send = output.replace('\n', '')
+            return Response(output_to_send)
+
+        elif scan_type == "Basic":
+            location = request.data.get('location')
+            command = ['sudo', "fsstat", location]
+            print(command)
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            output = result.stdout
+            formatted_output = output.replace('\n', '<br>')
+            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+                file.write(f"<h2>{scan_type}</h2>\n")
+                file.write(f"<p>{formatted_output}</p>\n")
+            output_to_send = output.replace('\n', '')
+            return Response(output_to_send)
+        
+        elif scan_type == "Meta data of image":
+            location = request.data.get('location')
+            # command = ["sudo", "mmls", location]
+            # print(command)
+            # result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            
+            command = ["sudo", "fls", "-r", location]
+            print(command)
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            output = result.stdout
+            formatted_output = output.replace('\n', '<br>')
+            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+                file.write(f"<h2>{scan_type}</h2>\n")
+                file.write(f"<p>{formatted_output}</p>\n")
+            output_to_send = output.replace('\n', '')
+            return Response(output_to_send)
+
+        elif scan_type == "hash value":
+            alg = request.data.get("alg")
+            name = request.data.get("name")
+            command = ["sudo", "hashrat", "-"+alg, name]
+            print(command)
+            result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
+            output = result.stdout
+            formatted_output = output.replace('\n', '<br>')
+            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+                file.write(f"<h2>{scan_type}</h2>\n")
+                file.write(f"<p>{formatted_output}</p>\n")
+            output_to_send = output.replace('\n', '')
+            return Response(output_to_send)
+
+        
+        else:
+            return Response("Stop")
+        
+
+        
+
+class live_analysis(APIView):
+    def post(self, request):
+        scan_type = request.data.get('scan_type')
+
+        if scan_type == "nmon":
+            subprocess.run(['xterm', '-e', 'nmon'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+

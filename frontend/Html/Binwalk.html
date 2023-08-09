@@ -3,7 +3,7 @@
 <head>
     <title>nmap_api Frontend</title>
     <style>
-      .grid-container {
+      /* .grid-container {
           display: grid;
   grid-template-columns: repeat(2, 1fr);
   
@@ -35,7 +35,45 @@
   }
   .button:hover{
             background-color: #FBC400;
-        }
+        } */
+
+
+        .grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: transparent; /* Changed background color to transparent */
+  margin-top: 10%;
+}
+
+.grid-item p {
+  color: white;
+}
+
+.grid-item h2 {
+  color: white;
+}
+
+.grid-item label {
+  color: white;
+}
+
+.grid-item button {
+  background-color: white;
+}
+
+.grid-item button:hover {
+  background-color: #fbc400;
+}
+
+
+
         .button{
           position: absolute;
             /* bottom: -100%;
@@ -88,8 +126,8 @@
     <!--basic scan on the specified file-->
     <h2>basic scan on the specified file</h2>
     <label for="basic-scan">Enter basic scan on the specified file:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-    <input type="text" id="basic-scan">
+    <p>Perform a basic scan on the specified file.</p>
+    <input type="text" id="basic-scan" placeholder="firmware.bin">
     <button onclick="basicscan()">Scan</button>
     <pre id="basic-scan"></pre>
       </div>
@@ -102,9 +140,9 @@
       </script>
        <div class="grid-item">
        <!--specific file signatures-->
-    <h2>specific file signatures</h2>
+    <h2>Specific file signatures</h2>
     <label for="specific-file">Enter specific file signatures:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <p> Scan for specific file signatures within the specified file.</p>
     <input type="text" id="specific-file">
     <button onclick="specificfile()">Scan</button>
     <pre id="specific-file"></pre>
@@ -118,9 +156,9 @@
       </script>
        <div class="grid-item">
       <!--recursive scan-->
-    <h2>recursive scan</h2>
+    <h2>Recursive scan</h2>
     <label for="recursive-scan">Enter recursive scan:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <p>Perform a recursive scan on the specified file and its extracted files.</p>
     <input type="text" id="recursive-scan">
     <button onclick="recursivescan()">Scan</button>
     <pre id="recursive-scan"></pre>
@@ -136,7 +174,7 @@
        <!--entropy analysis-->
     <h2>entropy analysis</h2>
     <label for="entropy-analysis">Enter entropy analysis:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <p>Perform an entropy analysis on the specified file.</p>
     <input type="text" id="entropy-analysis">
     <button onclick="entropyanalysis()">Scan</button>
     <pre id="entropy-analysis"></pre>
@@ -150,9 +188,9 @@
       </script>
        <div class="grid-item">
       <!--recursive signature scan-->
-    <h2>recursive signature scan</h2>
+    <h2>Recursive signature scan</h2>
     <label for="recursive-signature">Enter recursive signature scan:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <p>Perform a recursive signature scan on the specified file.</p>
     <input type="text" id="recursive-signature">
     <button onclick="recursivesignature()">Scan</button>
     <pre id="recursive-signature"></pre>
@@ -166,9 +204,9 @@
       </script>
        <div class="grid-item">
       <!--only display results-->
-    <h2>only display results</h2>
+    <h2>Only display results</h2>
     <label for="only-display">Enter only display results:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <p>Suppress normal output, only display results.</p>
     <input type="text" id="only-display">
     <button onclick="onlydisplay()">Scan</button>
     <pre id="only-display"></pre>
@@ -184,7 +222,7 @@
       <!--Extract and Display Disassembly-->
     <h2>Extract and Display Disassemblys</h2>
     <label for="Extract">Enter Extract and Display Disassembly:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <p>Extract and display disassembly of extracted files.</p>
     <input type="text" id="Extract">
     <button onclick="Extractand()">Scan</button>
     <pre id="Extract"></pre>
@@ -200,7 +238,7 @@
         <!--Extract and Display Metadata-->
       <h2>Extract and Display Metadata</h2>
       <label for="Metadata">Enter Extract and Display Disassembly:</label>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+      <p>Extract files using a custom extraction method.</p>
       <input type="text" id="Metadata">
       <button onclick="DisplayMetadata()">Scan</button>
       <pre id="Metadata"></pre>
@@ -216,7 +254,7 @@
           <!--Enable Debugging Output-->
         <h2>Enable Debugging Output</h2>
         <label for="Debugging-Output">Enter Enable Debugging Output:</label>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <p>Enable debugging output for more detailed information.</p>
         <input type="text" id="Debugging-Output">
         <button onclick="DebuggingOutput()">Scan</button>
         <pre id="Debugging-Output"></pre>

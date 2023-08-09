@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>nmap_api Frontend</title>
+    <style>
+      /* .grid-container {
+          display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+  gap: 20px;
+  }
+  
+  .grid-item{
+    border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: black;
+  margin-top:10% ;
+ }
+ .grid-item p{
+    color: white;
+  }
+  .grid-item h2{
+    color: white;
+  }
+  .grid-item label{
+    color: white;
+  }
+  .grid-item button{
+    background-color: white;
+
+  }
+  .grid-item button:hover{
+    background-color: #FBC400;
+  } */
+
+
+  .grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: transparent; /* Changed background color to transparent */
+  margin-top: 10%;
+}
+
+.grid-item p {
+  color: white;
+}
+
+.grid-item h2 {
+  color: white;
+}
+
+.grid-item label {
+  color: white;
+}
+
+.grid-item button {
+  background-color: white;
+}
+
+.grid-item button:hover {
+  background-color: #fbc400;
+}
+
+  
+        .button:hover{
+            background-color: #FBC400;
+        }
+        .button{
+          position: absolute;
+            /* bottom: -350%;
+            left: 50%;
+            right: 50%;
+            margin-left: -104.5px;  */
+            background-color: black;
+            color: white;
+            height:7%;
+            padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+        }
+
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .grid-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        
+    </style>
+</head>
+<body>
+  <video autoplay loop muted playsinline id="video-background">
+    <!-- Multiple source files for cross-browser compatibility -->
+    <source src="../components/Jeeva UI Plain.mp4" type="video/mp4">
+    <!-- <source src="path_to_video/video.webm" type="video/webm"> -->
+    <!-- Add more source files if needed for other formats -->
+</video>
+    <h1>N-Map</h1>
+    <div class="grid-container">
+      <div class="grid-item">
+    
+    <!-- Single target scan -->
+    <h2>Single target scan</h2>
+    <label for="single-ip">Enter IP Address:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="single-ip">
+    <button onclick="scanSingleTarget()">Scan</button>
+    <pre id="single-result"></pre>
+      </div>
+
+      <div class="grid-item">
+
+    <!-- Multiple targets scan -->
+    <h2>Multiple targets scan</h2>
+    <label for="multi-ips">Enter IP Addresses (comma-separated):</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="multi-ips">
+    <button onclick="scanMultipleTargets()">Scan</button>
+    <pre id="multi-result"></pre>
+      </div>
+
+      <div class="grid-item">
+
+    <!-- Range of hosts scan -->
+    <h2>Range of hosts scan</h2>
+    <label for="range-ip">Enter Start IP Address:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="range-ip">
+    <label for="range-count">Enter IP Count:</label>
+    <input type="number" id="range-count" min="1" value="1">
+    <button onclick="scanRangeOfHosts()">Scan</button>
+    <pre id="range-result"></pre>
+      </div>
+
+      <div class="grid-item">
+
+    <!-- Entire Subnet scan -->
+    <h2>Entire Subnet scan</h2>
+    <label for="subnet-ip">Enter IP Address:</label>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <input type="text" id="subnet-ip">
+    <label for="subnet-mask">Enter Subnet Mask:</label>
+    <input type="number" id="subnet-mask" min="1" max="32" value="24">
+    <button onclick="scanEntireSubnet()">Scan</button>
+    <pre id="subnet-result"></pre>
+
+      </div>
+      <div class="grid-item">
+    
+        <!-- Aggressive Scan -->
+        <h2>Aggressive Scan</h2>
+        <label for="aggressive-scan">Enter Aggressive scan:</label>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <input type="text" id="aggressive-scan">
+        <button onclick="scanAggressive()">Scan</button>
+        <pre id="aggressive-result"></pre>
+          </div>
+          <script>
+            function scanAggressive() {
+            const ip = document.getElementById("aggresive-scan").value;
+            const data = { scan_type: "Aggressive Scan", ip: ip };
+            sendScanRequest(data, "aggressive-result");
+        }
+          </script>
+    
+          <div class="grid-item">
+    
+        <!-- IPv6 -->
+        <h2>IPv6</h2>
+        <label for="IPv6">Enter IPv6 Addresses:</label>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <input type="text" id="multi-ipv6">
+        <button onclick="scanIpv6()">Scan</button>
+        <pre id="IPv6"></pre>
+          </div>
+          <script>
+            function scanIpv6() {
+            const ip = document.getElementById("multi-ipv6").value;
+            const data = { scan_type: "IPv6", ip: ip };
+            sendScanRequest(data, "IPv6");
+        }
+          </script>
+    
+          <div class="grid-item">
+    
+        <!--Ping Only Scan-->
+        <h2>Ping Only scan</h2>
+        <label for="Ping-Only-Scan">Ping Only Scan:</label>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <input type="text" id="ping-only-scan">
+        <button onclick="pingOnlyscan()">Scan</button>
+        <pre id="ping-only-scan"></pre>
+          </div>
+          <script>
+            function pingOnlyscan() {
+            const ip = document.getElementById("ping-only-scan").value;
+            const data = { scan_type: "Ping Only Scan", ip: ip };
+            sendScanRequest(data, "ping-out-scan");
+        }
+          </script>
+    
+          <div class="grid-item">
+    
+        <!-- NO Ping -->
+        <h2>NO Ping</h2>
+        <label for="no-ping">Enter NO Ping:</label>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <input type="text" id="no-ping">
+        <button onclick="Noping()">Scan</button>
+        <pre id="no-ping-result"></pre>
+        
+          </div>
+          <script>
+            function Noping() {
+            const ip = document.getElementById("no-ping").value;
+            const data = { scan_type: "NO Ping", ip: ip };
+            sendScanRequest(data, "no-ping-result");
+        }
+          </script>
+        <div class="grid-item">
+    
+            <!-- TCP SYN Ping -->
+            <h2>TCP SYN Ping</h2>
+            <label for="TCP-SYN-Ping">Enter TCP SYN Ping:</label>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+            <input type="text" id="TCP-SYN-Ping">
+            <button onclick="TCPSYNPing()">Scan</button>
+            <pre id="TCP-SYN-Ping-result"></pre>
+              </div>
+              <script>
+                function TCPSYNPing() {
+                const ip = document.getElementById("TCP-SYN-Ping").value;
+                const data = { scan_type: "TCP SYN Ping", ip: ip };
+                sendScanRequest(data, "TCP-SYN-Ping-result");
+            }
+              </script>
+        
+              <div class="grid-item">
+        
+            <!-- TCP ACK Ping -->
+            <h2>TCP ACK Ping</h2>
+            <label for="TCP-ACK-Ping">Enter TCP ACK Ping:</label>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+            <input type="text" id="TCP-ACK-Ping">
+            <button onclick="TCPACKPing()">Scan</button>
+            <pre id="TCP-ACK-Ping-result"></pre>
+              </div>
+              <script>
+                function TCPACKPing() {
+                const ip = document.getElementById("TCP-ACK-Ping").value;
+                const data = { scan_type: "TCP ACK Ping", ip: ip };
+                sendScanRequest(data, "TCP-ACK-Ping-result");
+            }
+              </script>
+        
+              <div class="grid-item">
+        
+            <!-- UDP Ping -->
+            <h2>UDP Ping</h2>
+            <label for="UDP-Ping">Enter UDP Ping:</label>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+            <input type="text" id="UDP-Ping">
+            <button onclick="UDPPing()">Scan</button>
+            <pre id="UDP-Ping"></pre>
+              </div>
+              <script>
+                function UDPPing() {
+                const ip = document.getElementById("UDP-Ping").value;
+                const data = { scan_type: "UDP Ping", ip: ip };
+                sendScanRequest(data, "UDP-Ping");
+            }
+              </script>
+        
+              <div class="grid-item">
+        
+            <!-- SCTP INIT Ping -->
+            <h2>SCTP INIT Ping</h2>
+            <label for="SCTP-INIT-Ping">Enter SCTP INIT Ping:</label>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+            <input type="text" id="SCTP-INIT-Ping">
+            <button onclick="SCTPINITPing()">Scan</button>
+            <pre id="SCTP-INIT-Ping"></pre>
+            
+              </div>
+              <script>
+                function SCTPINITPing() {
+                const ip = document.getElementById("SCTP-INIT-Ping").value;
+                const data = { scan_type: "SCTP INIT Ping", ip: ip };
+                sendScanRequest(data, "SCTP-INIT-Ping");
+            }
+              </script>
+              <div class="grid-item">
+    
+                <!--ICMP Echo Ping -->
+                <h2>ICMP Echo Ping</h2>
+                <label for="ICMP-Echo-Ping">Enter ICMP Echo Ping:</label>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                <input type="text" id="ICMP-Echo-Ping">
+                <button onclick="ICMPEchoPing()">Scan</button>
+                <pre id="ICMP-Echo-Ping"></pre>
+                  </div>
+                  <script>
+                    function ICMPEchoPing() {
+                    const ip = document.getElementById("ICMP-Echo-Ping").value;
+                    const data = { scan_type: "ICMP Echo Ping", ip: ip };
+                    sendScanRequest(data, "ICMP-Echo-Ping");
+                }
+                  </script>
+            
+                  <div class="grid-item">
+            
+                <!-- ITimestamp PingCMP -->
+                <h2>ITimestamp PingCMP</h2>
+                <label for="ITimestamp-PingCMP">Enter IP Addresses (comma-separated):</label>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                <input type="text" id="ITimestamp-PingCMP">
+                <button onclick="ITimestampPingCMP()">Scan</button>
+                <pre id="ITimestamp-PingCMP"></pre>
+                  </div>
+                  <script>
+                    function ITimestampPingCMP() {
+                    const ip = document.getElementById("ITimestamp-PingCMP").value;
+                    const data = { scan_type: "ITimestamp PingCMP", ip: ip };
+                    sendScanRequest(data, "ITimestamp-PingCMP");
+                }
+                  </script>
+            
+                  <div class="grid-item">
+            
+                <!-- CMP Address Mask Ping -->
+                <h2>CMP Address Mask Ping</h2>
+                <label for="CMP-Address-Mask-Ping">Enter Start IP Address:</label>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                <input type="text" id="CMP-Address-Mask-Ping">
+                <button onclick="CMPAddressMaskPing()">Scan</button>
+                <pre id="range-result"></pre>
+                  </div>
+                  <script>
+                    function CMPAddressMaskPing() {
+                    const ip = document.getElementById("CMP-Address-Mask-Ping").value;
+                    const data = { scan_type: "CMP Address Mask Ping", ip: ip };
+                    sendScanRequest(data, "CMP-Address-Mask-Ping");
+                }
+                  </script>
+            
+                  <div class="grid-item">
+            
+                <!-- IP Protocol Ping -->
+                <h2>IP Protocol Ping</h2>
+                <label for="IP-Protocol-Ping">Enter IP Address:</label>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                <input type="text" id="IP-Protocol-Ping">
+                <button onclick="IPProtocolPing()">Scan</button>
+                <pre id="IP-Protocol-Ping"></pre>
+                
+                  </div>
+                  <script>
+                    function IPProtocolPing() {
+                    const ip = document.getElementById("IP-Protocol-Ping").value;
+                    const data = { scan_type: "IP Protocol Ping", ip: ip };
+                    sendScanRequest(data, "IP-Protocol-Ping");
+                }
+                  </script>
+
+                  <div class="grid-item">
+    
+                    <!-- Traceroute -->
+                    <h2>Traceroute</h2>
+                    <label for="Traceroute">Enter IP Address:</label>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                    <input type="text" id="Traceroute">
+                    <button onclick="Traceroute()">Scan</button>
+                    <pre id="Traceroute"></pre>
+                      </div>
+                      <script>
+                        function Traceroute() {
+                        const ip = document.getElementById("Traceroute").value;
+                        const data = { scan_type: "Traceroute", ip: ip };
+                        sendScanRequest(data, "Traceroute");
+                    }
+                      </script>
+                
+                      <div class="grid-item">
+                
+                    <!--Force Reverse DNS Resolution -->
+                    <h2>Force Reverse DNS Resolution</h2>
+                    <label for="Force-Reverse-DNS-Resolution">Enter IP Addresses (comma-separated):</label>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                    <input type="text" id="Force-Reverse-DNS-Resolution">
+                    <button onclick="ForceReverseDNSResolution()">Scan</button>
+                    <pre id="Force-Reverse-DNS-Resolution"></pre>
+                      </div>
+                      <script>
+                        function ForceReverseDNSResolution() {
+                        const ip = document.getElementById("Force-Reverse-DNS-Resolution").value;
+                        const data = { scan_type: "Force Reverse DNS Resolution", ip: ip };
+                        sendScanRequest(data, "Force-Reverse-DNS-Resolution");
+                    }
+                      </script>
+                
+                      <div class="grid-item">
+                
+                    <!--Disable Reverse DNS Resolution-->
+                    <h2>Disable Reverse DNS Resolution</h2>
+                    <label for="Disable-Reverse-DNS-Resolution">Enter Start IP Address:</label>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                    <input type="text" id="Disable-Reverse-DNS-Resolution">
+                    <button onclick="DisableReverseDNSResolution()">Scan</button>
+                    <pre id="Disable-Reverse-DNS-Resolution"></pre>
+                      </div>
+                      <script>
+                        function DisableReverseDNSResolution() {
+                        const ip = document.getElementById("Disable-Reverse-DNS-Resolution").value;
+                        const data = { scan_type: "Disable Reverse DNS Resolution", ip: ip };
+                        sendScanRequest(data, "Disable-Reverse-DNS-Resolution");
+                    }
+                      </script>
+                
+                
+                      <!-- <div class="grid-item"> -->
+                
+                    <!-- Alternative DNS Lookup -->
+                    <!-- <h2>Alternative DNS Lookup</h2>
+                    <label for="Alternative-DNS-Lookup">Enter IP Address:</label>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                    <input type="text" id="Alternative DNS Lookup">
+                    <button onclick="AlternativeDNSLookup()">Scan</button>
+                    <pre id="Alternative-DNS-Lookup"></pre>
+                    
+                      </div>
+                       <script>
+                        function AlternativeDNSLookup() {
+                        const ip = document.getElementById("Alternative-DNS-Lookup").value;
+                        const data = { scan_type: "Alternative DNS Lookup", ip: ip };
+                        sendScanRequest(data, "Alternative-DNS-Lookup");
+                    }
+                      </script>
+                      <div class="grid-item">
+                
+                        <h2>Manually Specify DNS Server</h2>
+                        <label for="Manually-Specify-DNS-Server">Enter IP Address:</label>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                        <input type="text" id="Manually-Specify-DNS Server">
+                        <button onclick="ManuallySpecifyDNSServer()">Scan</button>
+                        <pre id="Manually-Specify-DNS-Server"></pre>
+                        
+                          </div>
+                           <script>
+                            function ManuallySpecifyDNSServer() {
+                            const ip = document.getElementById("Manually-Specify DNS-Server").value;
+                            const data = { scan_type: "Manually Specify DNS Server", ip: ip };
+                            sendScanRequest(data, "Manually-Specify-DNS-Server");
+                        }
+                          </script> -->
+                          <div class="grid-item">
+                
+                            <!-- Create a Host List -->
+                            <h2>Create a Host List</h2>
+                            <label for="Create-a-Host-List">Enter IP Address:</label>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                            <input type="text" id="Create-a-Host-List">
+                            <button onclick="CreateaHostList()">Scan</button>
+                            <pre id="Create-a-Host-List"></pre>
+                            
+                              </div>
+                               <script>
+                                function CreateaHostList() {
+                                const ip = document.getElementById("Create-a-Host-List").value;
+                                const data = { scan_type: "Create a Host List", ip: ip };
+                                sendScanRequest(data, "Create-a-Host-List");
+                            }
+                              </script>
+                              <div class="grid-item">
+                
+                                <!-- TCP SYN Scan -->
+                                <h2>TCP SYN Scan</h2>
+                                <label for="TCP-SYN-Scan">Enter IP Address:</label>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                                <input type="text" id="TCP-SYN-Scan">
+                                <button onclick="TCPSYNScan()">Scan</button>
+                                <pre id="TCP-SYN-Scan"></pre>
+                                
+                                  </div>
+                                   <script>
+                                    function TCPSYNScan() {
+                                    const ip = document.getElementById("TC-SYN-Scan").value;
+                                    const data = { scan_type: "TCP SYN Scan", ip: ip };
+                                    sendScanRequest(data, "TCP-SYN-Scan");
+                                }
+                                  </script>
+                                   <div class="grid-item">
+                
+                                    <!-- TCP SYN Scan -->
+                                    <h2>TCP SYN Scan</h2>
+                                    <label for="TCP-SYN-Scan">Enter IP Address:</label>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+                                    <input type="text" id="TCP-SYN-Scan">
+                                    <button onclick="TCPSYNScan()">Scan</button>
+                                    <pre id="TCP-SYN-Scan"></pre>
+                                    
+                                      </div>
+                                       <script>
+                                        function TCPSYNScan() {
+                                        const ip = document.getElementById("TCP-SYN-Scan").value;
+                                        const data = { scan_type: "TCP SYN Scan", ip: ip };
+                                        sendScanRequest(data, "TCP-SYN-Scan");
+                                    }
+                                      </script>
+                                       
+    </div>      
+
+  </div>                                                      
+  <div style="margin-top: 10px;">
+    <button
+    id="back" class="button">Back
+</button>
+
+</div>
+    <script>
+        function scanSingleTarget() {
+            const ip = document.getElementById("single-ip").value;
+            const data = { scan_type: "Single target", ip: ip };
+            sendScanRequest(data, "single-result");
+        }
+
+        function scanMultipleTargets() {
+            const ips = document.getElementById("multi-ips").value.split(",");
+            const data = { scan_type: "Multiple_Targets", ip: ips };
+            sendScanRequest(data, "multi-result");
+        }
+
+        function scanRangeOfHosts() {
+            const startIp = document.getElementById("range-ip").value;
+            const ipCount = document.getElementById("range-count").value;
+            const data = { scan_type: "range of host", start_ip: startIp, ip_count: ipCount };
+            sendScanRequest(data, "range-result");
+        }
+
+        function scanEntireSubnet() {
+            const ip = document.getElementById("subnet-ip").value;
+            const subnet = document.getElementById("subnet-mask").value;
+            const data = { scan_type: "Entire Subnet", ip: ip, subnet: subnet };
+            sendScanRequest(data, "subnet-result");
+        }
+
+        function sendScanRequest(data, resultElementId) {
+            console.log(data)
+            fetch("http://127.0.0.1:8000/nmap/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.text())
+            .then(result => {
+                // document.getElementById(resultEleme
+                
+                alert(result);
+            })
+            .catch(error => {
+                console.error("Error occurred:", error);
+            });
+        }
+    </script>
+
+
+<script>
+  // Get a reference to the button element
+  const navigateButton1 = document.getElementById("back");
+
+  // Add a click event listener to the button
+  navigateButton1.addEventListener("click", function() {
+      // Navigate to index.html when the button is clicked
+      window.location.href = "Tools.html";
+  });
+  </script>
+  
+</body>
+</html>
+

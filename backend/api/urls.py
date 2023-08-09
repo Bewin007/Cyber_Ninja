@@ -11,4 +11,6 @@ urlpatterns = [
     path ('remove/',RemoveContentFromTestHTML.as_view()),
     path('process-html/', ProcessHTMLView.as_view()),
     path ('cmd/',execute_command),
+    path('fsstat/', Fsstat.as_view()),
+    path('live/', live_analysis.as_view()),
 ]

@@ -3,7 +3,7 @@
 <head>
     <title>nmap_api Frontend</title>
     <style>
-      .grid-container {
+      /* .grid-container {
           display: grid;
   grid-template-columns: repeat(2, 1fr);
   
@@ -32,16 +32,48 @@
   }
   .grid-item button:hover{
     background-color: #FBC400;
-  }
+  } */
+
+
+  .grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: transparent; /* Changed background color to transparent */
+  margin-top: 10%;
+}
+
+.grid-item p {
+  color: white;
+}
+
+.grid-item h2 {
+  color: white;
+}
+
+.grid-item label {
+  color: white;
+}
+
+.grid-item button {
+  background-color: white;
+}
+
+.grid-item button:hover {
+  background-color: #fbc400;
+}
+
   .button:hover{
             background-color: #FBC400;
         }
         .button{
           position: absolute;
-            bottom: -30%;
-            left: 50%;
-            right: 50%;
-            margin-left: -104.5px; /*104.5px is half of the button's width*/
             background-color: black;
             color: white;
             height:7%;
@@ -54,54 +86,7 @@
     transition: background-color 0.3s ease;
         }
 
-
-
-
-
-        .button-27 {
-  appearance: none;
-  background-color: #000000;
-  border: 2px solid #1A1A1A;
-  border-radius: 15px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 16px;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0;
-  min-height: 60px;
-  min-width: 0;
-  outline: none;
-  padding: 16px 24px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 100%;
-  will-change: transform;
-}
-
-.button-27:disabled {
-  pointer-events: none;
-}
-
-.button-27:hover {
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
-}
-
-.button-27:active {
-  box-shadow: none;
-  transform: translateY(0);
-}
-
-
-#video-background {
+        #video-background {
             position: fixed;
             top: 0;
             left: 0;
@@ -117,7 +102,6 @@
             z-index: 1;
             /* Add any necessary styling to make the grid content visible on top of the video */
         }
-
     </style>
 </head>
 <body>
@@ -135,7 +119,7 @@
     <!-- ifconfig-->
     <h2>IfConfig</h2>
     <label for="ifconfig">Enter ifconfig:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <p>command-line tool that displays network interface configuration information, including IP addresses and network details, providing insights into network settings on Unix-like operating systems. </p>
     <!-- <input type="text" id="ifconfig"> -->
     <button onclick="ifconfig()">Scan</button>
     <pre id="if-config"></pre>
@@ -154,8 +138,8 @@
     <!--capture the process-->
     <h2>capture the process</h2>
     <label for="capture-the-process">Enter capture the process</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
-    <input type="text" id="port-capture">
+    <p>capture the process from the working interface.</p>
+    <input type="text" id="port-capture" >
     <input type="text" id="count-capture">
     <button onclick="capturetheprocess()">Scan</button>
     <pre id="capture-the-process"></pre>
@@ -174,7 +158,7 @@
     <!--capture from specified interface-->
     <h2>to remove</h2>
     <label for="capture-from-specified-interface">Enter capture from specified interface:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <p>When you run this command, Tshark will start capturing network traffic on the specified interface ("enp0s3") until it collects 5 packets, and then it will terminate the capture.</p>
     <input type="text" id="interface_number">
     <input type="text" id="count-capture">
     <button onclick="capturefromspecifiedinterface()">Scan</button>
@@ -194,7 +178,7 @@
     <!--capture packets from ports-->
     <h2>capture packets from ports</h2>
     <label for="capture-packets-from-ports">Enter capture packets from ports:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <p>To capture the packets simultaneously </p>
     <input type="text" id="capture-packets-from-ports">
     <input type="text" id="capture-packets-from-num">
     <input type="text" id="capture-packets-from-count">
@@ -216,7 +200,7 @@
         <!--capture packet for duration-->
         <h2>capture packet for duration</h2>
         <label for="capture-packet-for-duration">Enter capture packet for duration:</label>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <p>When you run the command, Tshark will start capturing network traffic from the specified interface, and the captured packets' details will be displayed in the terminal in real-time.</p>
         <input type="text" id="duration-port">
         <input type="text" id="duration-time">
         <button onclick="capturepacketforduration()">Scan</button>
@@ -236,7 +220,7 @@
         <!--capture packet for filesize-->
         <h2>we are not saving ao useless</h2>
         <label for="capture-packet-for-filesize">Enter IPv6 Addresses:</label>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+        <p>Similarly, if you don’t need your files to be extra-large, filesize is a perfect flag to stop the process after some KB’s limits.</p>
         <input type="text" id="capture-packet-port">
         <input type="text" id="capture-packet-size">
         <button onclick="capturepacketforfilesize()">Scan</button>
@@ -253,14 +237,21 @@
     
         
     
-    <button 
+    <!-- <button 
     id="back" class="button">Back
-</button>
-    </div>
+</button> -->
     
 
 
-      <script>
+
+    </div>
+
+    <div style="margin-top: 10px;">
+      <button id="back" class="button">Back</button>
+  
+  </div>
+
+        <script>
         function sendScanRequest(data) {
                             console.log(data)
                               fetch(" http://127.0.0.1:8000/wireshark/", {
@@ -289,6 +280,5 @@
             window.location.href = "Tools.html";
         });
         </script>
-    </div>
 </body>
 </html>

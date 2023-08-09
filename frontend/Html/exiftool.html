@@ -3,39 +3,40 @@
 <head>
     <title>Exiftool</title>
     <style>
-      .grid-container {
-          display: grid;
+.grid-container {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
-  
   gap: 20px;
-  }
-  
-  .grid-item{
-    border: 1px solid #ccc;
+}
+
+.grid-item {
+  border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  background-color: black;
-  margin-top:10% ;
- }
- .grid-item p{
-    color: white;
-  }
-  .grid-item h2{
-    color: white;
-  }
-  .grid-item label{
-    color: white;
-  }
-  .grid-item button{
-    background-color: white;
+  background-color: transparent; /* Changed background color to transparent */
+  margin-top: 10%;
+}
 
-  }
-  .grid-item button:hover{
-    background-color: #FBC400;
-  }
-  .button:hover{
-            background-color: #FBC400;
-        }
+.grid-item p {
+  color: white;
+}
+
+.grid-item h2 {
+  color: white;
+}
+
+.grid-item label {
+  color: white;
+}
+
+.grid-item button {
+  background-color: white;
+}
+
+.grid-item button:hover {
+  background-color: #fbc400;
+}
+
         .button{
           position: absolute;
             background-color: black;
@@ -84,7 +85,7 @@
     <!--Extract information from a file-->
     <h2>Extract information from a file</h2>
     <label for="Extract-information-from-a-file">Enter Extract information from a file:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p> -->
     <input type="text" id="Extract-information-from-a-file">
     <button onclick="Extractinformationfromafile()">Scan</button>
     <pre id="Extract-information-from-a-file"></pre>
@@ -102,7 +103,7 @@
     <!-- Print all meta information-->
     <h2>Print all meta information</h2>
     <label for="Print-information">Enter IP Addresses (comma-separated):</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p> -->
     <input type="text" id="Print-information">
     <button onclick="Printinformation()">Scan</button>
     <pre id="Print-informationt"></pre>
@@ -120,7 +121,7 @@
     <!--Print common meta information-->
     <h2>Print common meta information</h2>
     <label for="Print-common">Enter Print common meta information:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p> -->
     <input type="text" id="Print-common">
     <button onclick="Printcommonmetainformation()">Scan</button>
     <pre id="Print-common"></pre>
@@ -138,7 +139,7 @@
     <!--Find image size and exposure time-->
     <h2>Find image size and exposure time</h2>
     <label for="Find-time">Enter Find image size and exposure time:</label>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+    <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p> -->
     <input type="text" id="Find-time">
     <button onclick="Findtime()">Scan</button>
     <pre id="subnet-result"></pre>
@@ -157,7 +158,7 @@
   <!--Extract image resolution from EXIF IFD1-->
   <h2>Extract image resolution from EXIF IFD1</h2>
   <label for="Extract-image">Enter Extract image resolution from EXIF IFD1:</label>
-  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+  <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p> -->
   <input type="text" id="Extract-image">
   <button onclick="Extractimage()">Scan</button>
   <pre id="Extract-image"></pre>
@@ -173,9 +174,9 @@
     <div class="grid-item">
 
       <!--all author-related XMP information from an image-->
-      <h2>all author-related XMP information from an image</h2>
+      <h2>All author-related XMP information from an image</h2>
       <label for="all-author">Enter all author-related XMP information from an image:</label>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+      <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p> -->
       <input type="text" id="all-author">
       <button onclick="allauthor()">Scan</button>
       <pre id="all-author"></pre>
@@ -193,7 +194,7 @@
           <!--Print one line of output containing the file name-->
           <h2>Print one line of output containing the file name</h2>
           <label for="Print-one">Enter Print one line of output containing the file name:</label>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+          <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p> -->
           <input type="text" id="Print-one">
           <button onclick="Printone()">Scan</button>
           <pre id="Print-one"></pre>
@@ -211,7 +212,7 @@
               <!--GPS positions from an AVCHD video-->
               <h2>GPS positions from an AVCHD video</h2>
               <label for="GPS-positions">Enter GPS positions from an AVCHD video:</label>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p>
+              <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,  </p> -->
               <input type="text" id="GPS-positions">
               <button onclick="GPS()">Scan</button>
               <pre id="GPS-positions"></pre>
