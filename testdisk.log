@@ -1,0 +1,35 @@
+
+
+Wed Aug  9 04:54:38 2023
+Command line: TestDisk
+
+TestDisk 7.1, Data Recovery Utility, July 2019
+Christophe GRENIER <grenier@cgsecurity.org>
+https://www.cgsecurity.org
+OS: Linux, kernel 6.4.7-200.fc38.x86_64 (#1 SMP PREEMPT_DYNAMIC Thu Jul 27 20:01:18 UTC 2023) x86_64
+Compiler: GCC 13.0
+ext2fs lib: 1.46.5, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: 20140608, curses lib: ncurses 6.4
+Warning: can't get size for Disk /dev/mapper/control - 0 B - 0 sectors, sector size=512
+Hard disk list
+Disk /dev/loop0 - 4096 B - 8 sectors (RO), sector size=512
+Disk /dev/loop1 - 123 MB / 118 MiB - 242136 sectors (RO), sector size=512
+Disk /dev/loop10 - 20 KB / 20 KiB - 40 sectors (RO), sector size=512
+Disk /dev/loop11 - 215 MB / 205 MiB - 421144 sectors (RO), sector size=512
+Disk /dev/loop12 - 55 MB / 53 MiB - 109072 sectors (RO), sector size=512
+Disk /dev/loop13 - 42 MB / 40 MiB - 82576 sectors (RO), sector size=512
+Disk /dev/loop14 - 14 MB / 13 MiB - 28072 sectors (RO), sector size=512
+Disk /dev/loop15 - 95 MB / 90 MiB - 185840 sectors (RO), sector size=512
+Disk /dev/loop16 - 287 MB / 273 MiB - 560960 sectors (RO), sector size=512
+Disk /dev/loop17 - 95 MB / 90 MiB - 186000 sectors (RO), sector size=512
+Disk /dev/loop2 - 58 MB / 55 MiB - 114000 sectors (RO), sector size=512
+Disk /dev/loop3 - 66 MB / 63 MiB - 129944 sectors (RO), sector size=512
+Disk /dev/loop4 - 77 MB / 73 MiB - 151256 sectors (RO), sector size=512
+Disk /dev/loop5 - 77 MB / 73 MiB - 151296 sectors (RO), sector size=512
+Disk /dev/loop6 - 228 MB / 218 MiB - 447264 sectors (RO), sector size=512
+Disk /dev/loop7 - 366 MB / 349 MiB - 716176 sectors (RO), sector size=512
+Disk /dev/loop8 - 509 MB / 485 MiB - 994336 sectors (RO), sector size=512
+Disk /dev/loop9 - 96 MB / 91 MiB - 187776 sectors (RO), sector size=512
+Disk /dev/nvme0n1 - 1024 GB / 953 GiB - CHS 976762 64 32, sector size=512
+
+
+TestDisk exited normally.

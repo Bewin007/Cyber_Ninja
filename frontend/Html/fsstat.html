@@ -126,6 +126,8 @@
 
       <div class="grid-item">
 
+        
+
     <!--Meta data of image-->
     <h2>Meta data of image</h2>
     <label for="meta-img">Enter Meta data of image:</label>
@@ -140,7 +142,28 @@
         const data = { scan_type: "Meta data of image", location: location };
         sendScanRequest(data, "meta-img");
     }
-      </script>    
+      </script>  
+       <div class="grid-item">
+
+      <!--hash value-->
+      <h2>hash value</h2>
+      <label for="hash-value">Enter Locatin:</label>
+      <p>A single target scan in Nmap involves probing and analyzing the network services and open ports of a specific device, providing insights into its system and network configuration for security assessment and vulnerability detection</p>
+      <input type="text" id="alg">
+      <input type="text" id="name">
+      <button onclick="hashvalue()">Scan</button>
+      <pre id="hash-value"></pre>
+      </div>
+      <script>
+          function hashvalue() {
+          const alg = document.getElementById("alg").value;
+          const name = document.getElementById("name").value;
+          const data = { scan_type: "hash value", alg:alg,name:name };
+          sendScanRequest(data, "hash-value");
+      }
+        </script>
+      
+      
 
 </div>                                                      
 <div style="margin-top: 10px;">
@@ -150,35 +173,10 @@
 
 </div>
   <script>
-      function scanSingleTarget() {
-          const ip = document.getElementById("single-ip").value;
-          const data = { scan_type: "Single target", ip: ip };
-          sendScanRequest(data, "single-result");
-      }
-
-      function scanMultipleTargets() {
-          const ips = document.getElementById("multi-ips").value.split(",");
-          const data = { scan_type: "Multiple_Targets", ip: ips };
-          sendScanRequest(data, "multi-result");
-      }
-
-      function scanRangeOfHosts() {
-          const startIp = document.getElementById("range-ip").value;
-          const ipCount = document.getElementById("range-count").value;
-          const data = { scan_type: "range of host", start_ip: startIp, ip_count: ipCount };
-          sendScanRequest(data, "range-result");
-      }
-
-      function scanEntireSubnet() {
-          const ip = document.getElementById("subnet-ip").value;
-          const subnet = document.getElementById("subnet-mask").value;
-          const data = { scan_type: "Entire Subnet", ip: ip, subnet: subnet };
-          sendScanRequest(data, "subnet-result");
-      }
 
       function sendScanRequest(data, resultElementId) {
           console.log(data)
-          fetch("http://127.0.0.1:8000/nmap/", {
+          fetch("http://127.0.0.1:8000/fsstat/", {
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
@@ -200,25 +198,6 @@
 
 <script>
 
-function sendScanRequest(data) {
-                    console.log(data)
-                    fetch("http://127.0.0.1:8000/fsstat/", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(data),
-                    })
-                    .then(response => response.text())
-                    .then(result => {
-                        // document.getElementById(resultEleme
-                        
-                        alert(result);
-                    })
-                    .catch(error => {
-                        console.error("Error occurred:", error);
-                    });
-                }
 
 
 // Get a reference to the button element

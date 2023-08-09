@@ -1440,4 +1440,8 @@ class live_analysis(APIView):
 
         if scan_type == "nmon":
             subprocess.run(['xterm', '-e', 'nmon'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            return Response("Successful")
+        elif scan_type == "testdisk":
+            subprocess.run(['xterm', '-e', 'sudo', 'testdisk'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            return Response("Successful")
 
