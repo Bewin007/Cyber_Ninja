@@ -1,6 +1,6 @@
 
 
-Wed Aug  9 05:10:36 2023
+Wed Aug  9 12:31:47 2023
 Command line: TestDisk
 
 TestDisk 7.1, Data Recovery Utility, July 2019
@@ -11,6 +11,7 @@ Compiler: GCC 13.0
 ext2fs lib: 1.46.5, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: 20140608, curses lib: ncurses 6.4
 Warning: can't get size for Disk /dev/mapper/control - 0 B - 0 sectors, sector size=512
 Hard disk list
+Disk /dev/sda - 31 GB / 28 GiB - CHS 29604 64 32, sector size=512 - HP USB Flash Drive, FW:PMAP
 Disk /dev/loop0 - 4096 B - 8 sectors (RO), sector size=512
 Disk /dev/loop1 - 123 MB / 118 MiB - 242136 sectors (RO), sector size=512
 Disk /dev/loop10 - 20 KB / 20 KiB - 40 sectors (RO), sector size=512
@@ -31,5 +32,4 @@ Disk /dev/loop8 - 509 MB / 485 MiB - 994336 sectors (RO), sector size=512
 Disk /dev/loop9 - 96 MB / 91 MiB - 187776 sectors (RO), sector size=512
 Disk /dev/nvme0n1 - 1024 GB / 953 GiB - CHS 976762 64 32, sector size=512
 
-
-TestDisk exited normally.
+SIGHUP detected! TestDisk has been killed.

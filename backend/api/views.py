@@ -24,7 +24,7 @@ from django.conf import settings
 
 class RemoveContentFromTestHTML(APIView):
     def get(self, request):
-        file_path = "/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html"
+        file_path = os.path.join("frontend/Html/test.html")
         
         # Check if the file exists
         if file_path:
@@ -47,7 +47,7 @@ class nmap_api(APIView):
             result = subprocess.run(['sudo', 'nmap', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -59,7 +59,7 @@ class nmap_api(APIView):
             result =  subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -76,7 +76,7 @@ class nmap_api(APIView):
             result =  subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -91,7 +91,7 @@ class nmap_api(APIView):
             result =  subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -104,7 +104,7 @@ class nmap_api(APIView):
         #     result =  subprocess.run(['sudo', 'namp', "-iR", "1"], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -116,7 +116,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-A', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -127,7 +127,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-6', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -139,7 +139,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sP', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -150,7 +150,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-PN', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -161,7 +161,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-PS', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -172,7 +172,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-PA', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -183,7 +183,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-PU', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -194,7 +194,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-PY', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -205,7 +205,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-PE', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -216,7 +216,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-PP', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -227,7 +227,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-PM', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -238,7 +238,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-PO', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -249,7 +249,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '--traceroute', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -260,7 +260,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-R', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -271,7 +271,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-n', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -282,7 +282,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '--system-dns', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -294,7 +294,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '--dns-servers', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -305,7 +305,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sL', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -317,7 +317,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sS', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -328,7 +328,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sT', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -339,7 +339,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sU', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -350,7 +350,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sN', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -361,7 +361,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sF', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -372,7 +372,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sX', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -383,7 +383,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sA', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -396,7 +396,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '--scanflags',flag, ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -407,7 +407,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sO', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -418,7 +418,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '--send-eth', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -429,7 +429,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '--send-ip ', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -443,7 +443,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-F', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -457,7 +457,7 @@ class nmap_api(APIView):
             result =  subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -471,7 +471,7 @@ class nmap_api(APIView):
             result =  subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -486,7 +486,7 @@ class nmap_api(APIView):
                 result = subprocess.run(tcp_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
                 output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -501,7 +501,7 @@ class nmap_api(APIView):
                 result = subprocess.run(udp_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
                 output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -512,7 +512,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-p', '*', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -524,7 +524,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '--top-ports',num, ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -535,7 +535,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-r', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -547,7 +547,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-O', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -558,7 +558,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-O','--osscan guess', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -569,7 +569,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sV', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -580,7 +580,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sV','--version trace', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -591,7 +591,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-sR', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -603,7 +603,7 @@ class nmap_api(APIView):
             result =  subprocess.run(['sudo', 'nmap', '-f', ip], capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -616,7 +616,7 @@ class nmap_api(APIView):
             result = subprocess.run(mtu_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -629,7 +629,7 @@ class nmap_api(APIView):
             result = subprocess.run(decoy_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -642,7 +642,7 @@ class nmap_api(APIView):
         #     result = subprocess.run(zombie_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -655,7 +655,7 @@ class nmap_api(APIView):
             result = subprocess.run(source_port_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -668,7 +668,7 @@ class nmap_api(APIView):
             result = subprocess.run(random_data_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -680,7 +680,7 @@ class nmap_api(APIView):
         #     result = subprocess.run(randomize_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -693,7 +693,7 @@ class nmap_api(APIView):
         #     result = subprocess.run(spoof_mac_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -705,7 +705,7 @@ class nmap_api(APIView):
             result = subprocess.run(badsum_command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -718,7 +718,7 @@ class nmap_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -730,7 +730,7 @@ class nmap_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -742,7 +742,7 @@ class nmap_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -754,7 +754,7 @@ class nmap_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -766,7 +766,7 @@ class nmap_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -778,7 +778,7 @@ class nmap_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -790,7 +790,7 @@ class nmap_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -803,7 +803,7 @@ class nmap_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -818,7 +818,7 @@ class nmap_api(APIView):
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -831,7 +831,7 @@ class nmap_api(APIView):
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -843,7 +843,7 @@ class nmap_api(APIView):
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -855,7 +855,7 @@ class nmap_api(APIView):
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -867,7 +867,7 @@ class nmap_api(APIView):
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -879,7 +879,7 @@ class nmap_api(APIView):
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -900,7 +900,7 @@ class volatality_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -917,7 +917,7 @@ class wireshark_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -930,7 +930,7 @@ class wireshark_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -943,7 +943,7 @@ class wireshark_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -958,7 +958,7 @@ class wireshark_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -972,7 +972,7 @@ class wireshark_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -986,7 +986,7 @@ class wireshark_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1005,7 +1005,7 @@ class exiftool_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1017,7 +1017,7 @@ class exiftool_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1029,7 +1029,7 @@ class exiftool_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1041,7 +1041,7 @@ class exiftool_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1053,7 +1053,7 @@ class exiftool_api(APIView):
         #     result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
         #     output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1065,7 +1065,7 @@ class exiftool_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1077,7 +1077,7 @@ class exiftool_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1089,7 +1089,7 @@ class exiftool_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1101,7 +1101,7 @@ class exiftool_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1120,7 +1120,7 @@ class Strings_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1132,7 +1132,7 @@ class Strings_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1144,7 +1144,7 @@ class Strings_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1156,7 +1156,7 @@ class Strings_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1168,7 +1168,7 @@ class Strings_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1180,7 +1180,7 @@ class Strings_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1195,7 +1195,7 @@ class Binwalk_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1207,7 +1207,7 @@ class Binwalk_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1219,7 +1219,7 @@ class Binwalk_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1231,7 +1231,7 @@ class Binwalk_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1243,7 +1243,7 @@ class Binwalk_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1255,7 +1255,7 @@ class Binwalk_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1267,7 +1267,7 @@ class Binwalk_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1279,7 +1279,7 @@ class Binwalk_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1291,7 +1291,7 @@ class Binwalk_api(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1305,8 +1305,8 @@ class Binwalk_api(APIView):
 
 class ProcessHTMLView(APIView):
     def get(self, request):
-        file_path = "/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html"
-        output_directory = "/home/bewin/Desktop/Cyber_Ninja_Backend/Log"
+        file_path = os.path.join("frontend/Html/test.html")
+        output_directory = os.path.join("Log")
         
         # Check if the file exists
         if os.path.exists(file_path):
@@ -1360,7 +1360,7 @@ def execute_command(request):
 #     except subprocess.CalledProcessError as e:
 #         output = {'output': f"Error: {e.output}"}
 
-#     with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+#     with open(os.path.join('frontend/Html/test.html'), 'a') as file:
 #         file.write(f"<h2>{command}</h2>\n")
 #         file.write(f"<p>{output['output']}</p>\n")
 
@@ -1379,7 +1379,7 @@ class Fsstat(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1392,7 +1392,7 @@ class Fsstat(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1409,7 +1409,7 @@ class Fsstat(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
@@ -1423,7 +1423,7 @@ class Fsstat(APIView):
             result = subprocess.run(command, capture_output=True, text=True, check=True, input='root@2004\n', encoding='utf-8')
             output = result.stdout
             formatted_output = output.replace('\n', '<br>')
-            with open('/home/bewin/Desktop/Cyber_Ninja_Backend/frontend/Html/test.html', 'a') as file:
+            with open(os.path.join('frontend/Html/test.html'), 'a') as file:
                 file.write(f"<h2>{scan_type}</h2>\n")
                 file.write(f"<p>{formatted_output}</p>\n")
             output_to_send = output.replace('\n', '')
