@@ -1,9 +1,9 @@
 Kavach-2023 Hackathon Project
 Software for Hardware Forensic Suite
 
-![GitHub stars](https://img.shields.io/github/stars/YourUsername/YourRepo)
-![GitHub forks](https://img.shields.io/github/forks/YourUsername/YourRepo)
-![GitHub license](https://img.shields.io/github/license/YourUsername/YourRepo)
+![GitHub stars](https://img.shields.io/github/stars/Bewin007/Cyber_Ninja)
+![GitHub forks](https://img.shields.io/github/forks/Bewin007/Cyber_Ninja)
+![GitHub license](https://img.shields.io/github/license/Bewin007/Cyber_Ninja)
 
 This project is a software suite designed for hardware forensics on Fedora (RedHat-based) operating systems. It provides a graphical user interface (GUI) to streamline and enhance the functionality of essential forensic tools, including Binwalk, Nmap, Strings, dd, TestDisk, and more.
 
